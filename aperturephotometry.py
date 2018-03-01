@@ -5,8 +5,8 @@ from astropy.io import fits
 import numpy as np
 from orphics import maps
 
-map90location='/Users/Teva/Senior Thesis/f090_daynight_all_map_mono_deep56.fits'
-map150location='/Users/Teva/Senior Thesis/f150_daynight_all_map_mono_deep56.fits'
+map90location='/Users/Teva/maps and catalog data/f090_daynight_all_map_mono_deep56.fits'
+map150location='/Users/Teva/maps and catalog data/f150_daynight_all_map_mono_deep56.fits'
 
 lmap90=enmap.read_map(map90location)
 lmap150=enmap.read_map(map150location)
@@ -14,7 +14,7 @@ tmap90=lmap90[0]
 tmap150=lmap150[0]
 Ny,Nx = tmap90.shape #they have the same shape so it doesn't matter if we use the 90 or 150 map
 
-cat_location='act_confirmed_clusters.fits'
+cat_location='../maps and catalog data/act_confirmed_clusters.fits'
 #cat_location='act_candidate_clusters.fits'
 out_dir = "./"
 
