@@ -4,6 +4,10 @@ from enlib import enmap
 from astropy.io import fits
 import numpy as np
 from orphics import maps
+import orphics.io as io
+from orphics.io import Plotter as pl
+import matplotlib
+import matplotlib.pyplot as plt
 
 map90location='/Users/Teva/maps and catalog data/f090_daynight_all_map_mono_deep56.fits'
 map150location='/Users/Teva/maps and catalog data/f150_daynight_all_map_mono_deep56.fits'
@@ -27,6 +31,10 @@ Np = np.int(widthStampArcminute/pixScale+0.5)
 pad = np.int(Np/2+0.5)
 N=0
 
+CalculatedY=[]
+MeasuredY=[]
+stack90=0
+stack150=0
 for i in range(0,len(catalog)):
 	ra=catalog[i][1]*np.pi/180
 	dec=catalog[i][2]*np.pi/180
@@ -41,6 +49,20 @@ for i in range(0,len(catalog)):
 		x150=((6.62607004*10**-34*150*10**9)/(1.38064852*10**-23*2.7255))
 		a150=2.7255*x150*(np.cosh(x150/2.)/np.sinh(x150/2.))
 		Ycalculated=(S90-S150)/(a90-a150)
-		print(Ycalculated)
+		CalculatedY.append(Ycalculated)
+		YMeasured=catalog[i][11]
+		MeasuredY.append(YMeasured)
+		stack90=stack90+cutout90
+		stack150=stack150+cutout150
 		N=N+1
 print(N)
+stack90=stack90/N
+stack150=stack150/N
+io.plot_img(stack90,"stack90")
+plt.hist(CalculatedY)
+plt.savefig("Calculated Y Hist")
+# plt.scatter(MeasuredY,CalculatedY)
+# ymax=max(CalculatedY)
+# ymin=min(CalculatedY)
+# plt.ylim(ymin,ymax)
+# plt.savefig("Calculated vs Measured Y")
