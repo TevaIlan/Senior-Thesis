@@ -64,7 +64,7 @@ print(N)
 stack90=stack90/N
 stack150=stack150/N
 io.plot_img(stack90,"stack90")
-io.plot_img(stack150,"stack90")
+io.plot_img(stack150,"stack150")
 
 plt.scatter(MeasuredY,S90s)
 ymax=max(S90s)
@@ -73,8 +73,25 @@ plt.ylim(ymin,ymax)
 plt.xlabel('Measured Y')
 plt.ylabel('Flux')
 plt.savefig("Flux vs Measured Y 90")
-# plt.hist(CalculatedY)
-# plt.savefig("Calculated Y Hist")
+plt.close()
+
+plt.scatter(MeasuredY,S150s)
+ymax=max(S150s)
+ymin=min(S150s)
+plt.ylim(ymin,ymax)
+plt.xlabel('Measured Y')
+plt.ylabel('Flux')
+plt.savefig("Flux vs Measured Y 150")
+plt.close()
+
+plt.hist(S90s)
+plt.savefig("Flux 90 Hist")
+plt.close()
+
+plt.hist(S150s)
+plt.savefig("Flux 150 Hist")
+plt.close()
+
 # plt.scatter(MeasuredY,CalculatedY)
 # ymax=max(CalculatedY)
 # ymin=min(CalculatedY)
