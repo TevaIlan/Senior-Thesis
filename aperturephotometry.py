@@ -48,10 +48,10 @@ for i in range(0,len(catalog)):
 		S90s.append(S90)
 		S150=maps.aperture_photometry(instamp=cutout150,aperture_radius=1.5*np.pi/10800,annulus_width=1.4*np.pi/10800)
 		S150s.append(S150)
-		x90=((6.62607004*10**-34*90*10**9)/(1.38064852*10**-23*2.7255))
-		a90=2.7255*x90*(np.cosh(x90/2.)/np.sinh(x90/2.))
-		x150=((6.62607004*10**-34*150*10**9)/(1.38064852*10**-23*2.7255))
-		a150=2.7255*x150*(np.cosh(x150/2.)/np.sinh(x150/2.))
+		x90=((6.62607004*10**(-34)*90*10**9)/(1.38064852*10**(-23)*2.7255))
+		a90=2.7255*x90*(np.cosh(x90/2.)/np.sinh(x90/2.))-4
+		x150=((6.62607004*10**(-34)*150*10**9)/(1.38064852*10**(-23)*2.7255))
+		a150=2.7255*x150*(np.cosh(x150/2.)/np.sinh(x150/2.))-4
 		Ycalculated=(S90-S150)/(a90-a150)
 		CalculatedY.append(Ycalculated)
 		YMeasured=catalog[i][11]
