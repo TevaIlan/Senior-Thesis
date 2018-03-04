@@ -33,6 +33,8 @@ N=0
 
 CalculatedY=[]
 MeasuredY=[]
+S90s=[]
+S150s=[]
 stack90=0
 stack150=0
 for i in range(0,len(catalog)):
@@ -43,7 +45,9 @@ for i in range(0,len(catalog)):
 		cutout90=maps.cutout(tmap90,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
 		cutout150=maps.cutout(tmap150,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
 		S90=maps.aperture_photometry(instamp=cutout90,aperture_radius=1.5*np.pi/10800,annulus_width=(150/90)*1.4*np.pi/10800)
+		S90s.append(S90)
 		S150=maps.aperture_photometry(instamp=cutout150,aperture_radius=1.5*np.pi/10800,annulus_width=1.4*np.pi/10800)
+		S150s.append(S150)
 		x90=((6.62607004*10**-34*90*10**9)/(1.38064852*10**-23*2.7255))
 		a90=2.7255*x90*(np.cosh(x90/2.)/np.sinh(x90/2.))
 		x150=((6.62607004*10**-34*150*10**9)/(1.38064852*10**-23*2.7255))
@@ -56,11 +60,21 @@ for i in range(0,len(catalog)):
 		stack150=stack150+cutout150
 		N=N+1
 print(N)
+
 stack90=stack90/N
 stack150=stack150/N
 io.plot_img(stack90,"stack90")
-plt.hist(CalculatedY)
-plt.savefig("Calculated Y Hist")
+io.plot_img(stack150,"stack90")
+
+plt.scatter(MeasuredY,S90s)
+ymax=max(S90s)
+ymin=min(S90s)
+plt.ylim(ymin,ymax)
+plt.xlabel('Measured Y')
+plt.ylabel('Flux')
+plt.savefig("Flux vs Measured Y 90")
+# plt.hist(CalculatedY)
+# plt.savefig("Calculated Y Hist")
 # plt.scatter(MeasuredY,CalculatedY)
 # ymax=max(CalculatedY)
 # ymin=min(CalculatedY)
