@@ -23,12 +23,12 @@ ccon = cosmology.defaultConstants
 
 apmeans = []
 aperrs = []
-apmeans_lessthan353=[]
-aperrs_lessthan353=[]
-apmeans_greaterthan217=[]
-aperrs_greaterthan217=[]
+# apmeans_lessthan353=[]
+# aperrs_lessthan353=[]
+# apmeans_greaterthan217=[]
+# aperrs_greaterthan217=[]
 
-
+#N=0
 
 for freq in freqlist:
     aps,apwts = np.loadtxt("f"+freq+"_"+args.cat+"_apflux.txt",unpack=True)
@@ -46,12 +46,13 @@ for freq in freqlist:
     print(freq, " S/N :",apmean/aperr)
     apmeans.append(apmean/1e6)
     aperrs.append(aperr/1e6)
-    if freq<353:
-        apmeans_lessthan353.append(apmean/1e6)
-        aperrs_lessthan353.append(aperr/1e6)
-    else:
-        apmeans_greaterthan217.append(apmean/1e6)
-        aperrs_greaterthan217.append(aperr/1e6)
+    # if N<3:
+    #     apmeans_lessthan353.append(apmean/1e6)
+    #     aperrs_lessthan353.append(aperr/1e6)
+    # if N>2:
+    #     apmeans_greaterthan217.append(apmean/1e6)
+    #     aperrs_greaterthan217.append(aperr/1e6)
+    # N=N+1
 
 
 
@@ -166,18 +167,21 @@ pl.hline()
 # pl.hline(y=tfit,ls="-",alpha=0.2)
 pl.done(io.dout_dir+"apfluxes_fit.png")
 
-fs = [float(f) for f in lowfreqlist]
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)')
-pl.add_err(fs,(apmeans_lessthan353),yerr=aperrs_lessthan353,marker="o",markersize=8,elinewidth=3)# label='Error')
-# pl.add(freqs,TCMB*Y*fnu)
-# pl.add(freqs,D*bnu)
-pl.add(freqs,(sfit),ls="-",label='sfit')
-pl.add(freqs,(yfit),ls="--",label='yfit')
-pl.add(freqs,(dfit),ls="--",label='dfit')
-pl.legend()
-pl.hline()
-# pl.hline(y=tfit,ls="-",alpha=0.2)
-pl.done(io.dout_dir+"apfluxes_fit_lessthan353.png")
+# print(apmeans)
+# print(apmeans_lessthan353)
+# fs = [float(f) for f in lowfreqlist]
+# #freqs = np.arange(30,250,1.)
+# pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)')
+# pl.add_err(fs,(apmeans_lessthan353),yerr=aperrs_lessthan353,marker="o",markersize=8,elinewidth=3)# label='Error')
+# # pl.add(freqs,TCMB*Y*fnu)
+# # pl.add(freqs,D*bnu)
+# pl.add(freqs,(sfit),ls="-",label='sfit')
+# pl.add(freqs,(yfit),ls="--",label='yfit')
+# pl.add(freqs,(dfit),ls="--",label='dfit')
+# pl.legend()
+# pl.hline()
+# # pl.hline(y=tfit,ls="-",alpha=0.2)
+# pl.done(io.dout_dir+"apfluxes_fit_lessthan353.png")
 
 # D = 1e-7
 # Y = 1e-5
