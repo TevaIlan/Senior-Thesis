@@ -58,14 +58,14 @@ elif freq=="90":
     ntheta = 1.
     
 elif freq=="217":
-    imap = hp.read_map('/Users/Teva/maps and catalog data/HFI_SkyMap_217_2048_R2.02_full_cutout_h0.fits')*1e6
+    imap = hp.read_map('/Users/Teva/maps and catalog data/HFI_SkyMap_217_2048_R2.02_full.fits')*1e6
     apin = 17.
     apout = 6.0
     pt_cut = 2000
     ntheta = 5.
     
 elif freq=="353":
-    imap = hp.read_map('/Users/Teva/maps and catalog data/HFI_SkyMap_353_2048_R2.02_full_cutout_h0.fits')*1e6
+    imap = hp.read_map('/Users/Teva/maps and catalog data/HFI_SkyMap_353_2048_R2.02_full.fits')*1e6
     apin = 23.
     apout = 6.0
     pt_cut = 15000
