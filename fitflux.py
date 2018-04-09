@@ -16,11 +16,17 @@ io.dout_dir += args.cat+"_"
 
 #freqlist = ['90','150','217','353']
 freqlist = ['90','150','217','353','545','857']
+lowfreqlist = ['90','150','217']
+highfreqlist = ['353','545','857']
 
 ccon = cosmology.defaultConstants
 
 apmeans = []
 aperrs = []
+apmeans_lessthan353=[]
+aperrs_lessthan353=[]
+apmeans_greaterthan217=[]
+aperrs_greaterthan217=[]
 
 
 
@@ -40,7 +46,12 @@ for freq in freqlist:
     print(freq, " S/N :",apmean/aperr)
     apmeans.append(apmean/1e6)
     aperrs.append(aperr/1e6)
-
+    if freq<353:
+        apmeans_lessthan353.append(apmean/1e6)
+        aperrs_lessthan353.append(aperr/1e6)
+    else:
+        apmeans_greaterthan217.append(apmean/1e6)
+        aperrs_greaterthan217.append(aperr/1e6)
 
 
 
@@ -106,12 +117,13 @@ D = 3e-17
 # D = 2e-18
 
 fs = [float(f) for f in freqlist]
-pl = io.Plotter(xlabel='$\\nu$',ylabel='F',yscale='log')
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
 pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)
-pl.add(freqs,np.abs(TCMB*Y*fnu))
-pl.add(freqs,np.abs(D*bnu))
-pl.add(freqs,np.abs(D*bnu+TCMB*Y*fnu),ls="--")
+pl.add(freqs,np.abs(TCMB*Y*fnu),label='$T_{cmb} Y f_{nu}$')
+pl.add(freqs,np.abs(D*bnu),label='$D b_{nu}$')
+pl.add(freqs,np.abs(D*bnu+TCMB*Y*fnu),ls="--", label='$D b_{nu}+ T_{cmb} Y f_{nu}$')
 pl.hline()
+pl.legend()
 pl.done(io.dout_dir+"apfluxes.png")
 
 
@@ -129,28 +141,43 @@ yfit = yflux(freqs,Yfit)
 dfit = dflux(freqs,Dfit)
 
 
-pl = io.Plotter(xlabel='$\\nu$',ylabel='F',yscale='log')
-pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
+pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)#, label='Error')
 # pl.add(freqs,TCMB*Y*fnu)
 # pl.add(freqs,D*bnu)
-pl.add(freqs,np.abs(sfit),ls="-")
-pl.add(freqs,np.abs(yfit),ls="--")
-pl.add(freqs,np.abs(dfit),ls="--")
+pl.add(freqs,np.abs(sfit),ls="-", label='sfit' )
+pl.add(freqs,np.abs(yfit),ls="--", label='yfit')
+pl.add(freqs,np.abs(dfit),ls="--",label='dfit')
+pl.legend()
 pl.hline()
 # pl.hline(y=tfit,ls="-",alpha=0.2)
 pl.done(io.dout_dir+"apfluxes_fitlog.png")
 
 
-pl = io.Plotter(xlabel='$\\nu$',ylabel='F')
-pl.add_err(fs,(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)')
+pl.add_err(fs,(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)# label='Error')
 # pl.add(freqs,TCMB*Y*fnu)
 # pl.add(freqs,D*bnu)
-pl.add(freqs,(sfit),ls="-")
-pl.add(freqs,(yfit),ls="--")
-pl.add(freqs,(dfit),ls="--")
+pl.add(freqs,(sfit),ls="-",label='sfit')
+pl.add(freqs,(yfit),ls="--",label='yfit')
+pl.add(freqs,(dfit),ls="--",label='dfit')
+pl.legend()
 pl.hline()
 # pl.hline(y=tfit,ls="-",alpha=0.2)
 pl.done(io.dout_dir+"apfluxes_fit.png")
+
+fs = [float(f) for f in lowfreqlist]
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)')
+pl.add_err(fs,(apmeans_lessthan353),yerr=aperrs_lessthan353,marker="o",markersize=8,elinewidth=3)# label='Error')
+# pl.add(freqs,TCMB*Y*fnu)
+# pl.add(freqs,D*bnu)
+pl.add(freqs,(sfit),ls="-",label='sfit')
+pl.add(freqs,(yfit),ls="--",label='yfit')
+pl.add(freqs,(dfit),ls="--",label='dfit')
+pl.legend()
+pl.hline()
+# pl.hline(y=tfit,ls="-",alpha=0.2)
+pl.done(io.dout_dir+"apfluxes_fit_lessthan353.png")
 
 # D = 1e-7
 # Y = 1e-5
