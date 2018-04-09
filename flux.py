@@ -42,16 +42,16 @@ io.dout_dir += "f"+freq+"_"+args.cat+"_"
 
 
 if freq=="150":
-    imap = enmap.read_fits('/Users/Teva/maps and catalog data/f150_daynight_all_map_mono_deep56.fits')
-    dmap = enmap.read_fits('/Users/Teva/maps and catalog data/f150_daynight_all_div_mono_deep56.fits')
+    imap = enmap.read_fits('/Users/Teva/maps and catalog data/f150_night_all2_map_mono.fits')
+    dmap = enmap.read_fits('/Users/Teva/maps and catalog data/f150_night_all2_div_mono.fits')
     apin = 6.
     apout = 1.5
     pt_cut = 1000
     ntheta = 1.
 
 elif freq=="90":
-    imap = enmap.read_fits('/Users/Teva/maps and catalog data/f090_daynight_all_map_mono_deep56.fits')
-    dmap = enmap.read_fits('/Users/Teva/maps and catalog data/f090_daynight_all_div_mono_deep56.fits')    
+    imap = enmap.read_fits('/Users/Teva/maps and catalog data/f090_night_all2_map_mono.fits')
+    dmap = enmap.read_fits('/Users/Teva/maps and catalog data/f090_night_all2_div_mono.fits')    
     apin = 6.
     apout = 1.5*150./90.
     pt_cut = 1500
