@@ -92,17 +92,17 @@ def f_nu(nu):
     return ans
 
 
-zavg = 0.5
+zavg = 0.36315244
 
 TCMB = 2.7255
 def yflux(fghz,Yin):
     return TCMB*f_nu(fghz)*Yin
 def dflux(fghz,Din):
     return bdust(fghz,zavg)*Din
-def Sflux(fghz,Yin,Din):#,dT):
+def Sflux(fghz,Yin,Din,dT):
     if Yin<0: return np.nan
     if Din<0: return np.nan
-    return yflux(fghz,Yin)+dflux(fghz,Din)#+dT
+    return yflux(fghz,Yin)+dflux(fghz,Din)+dT
 
 from scipy.optimize import curve_fit
 
@@ -129,43 +129,66 @@ pl.done(io.dout_dir+"apfluxes.png")
 
 
 
-popt,pcov = curve_fit(Sflux,fs,apmeans,sigma=aperrs,p0=[Y,D])#,0.])
+# popt,pcov = curve_fit(Sflux,fs,apmeans,sigma=aperrs,p0=[Y,D,0.])
 
-print(popt)
+# print(popt)
+# print(pcov)
 
-Yfit = popt[0]
-Dfit = popt[1]
+
+# Yfit = popt[0]
+# Dfit = popt[1]
 # tfit = popt[2]
 
-sfit = Sflux(freqs,Yfit,Dfit)#,tfit)
-yfit = yflux(freqs,Yfit)
-dfit = dflux(freqs,Dfit)
+# sfit = Sflux(freqs,Yfit,Dfit,tfit)
+# yfit = yflux(freqs,Yfit)
+# dfit = dflux(freqs,Dfit)
 
 
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
-pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)#, label='Error')
-# pl.add(freqs,TCMB*Y*fnu)
-# pl.add(freqs,D*bnu)
-pl.add(freqs,np.abs(sfit),ls="-", label='sfit' )
-pl.add(freqs,np.abs(yfit),ls="--", label='yfit')
-pl.add(freqs,np.abs(dfit),ls="--",label='dfit')
-pl.legend()
-pl.hline()
-# pl.hline(y=tfit,ls="-",alpha=0.2)
+
+
+# pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
+# pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)#, label='Error')
+# # pl.add(freqs,TCMB*Y*fnu)
+# # pl.add(freqs,D*bnu)
+# pl.add(freqs,np.abs(sfit),ls="-", label='sfit' )
+# pl.add(freqs,np.abs(yfit),ls="--", label='yfit')
+# pl.add(freqs,np.abs(dfit),ls="--",label='dfit')
+# pl.hline()
+# pl.hline(y=tfit,ls="-",alpha=0.2,label='kSZ')
+# pl.legend()
+# pl.done(io.dout_dir+"apfluxes_fitlog.png")
+
+
+# pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)')
+# pl.add_err(fs,(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)# label='Error')
+# # pl.add(freqs,TCMB*Y*fnu)
+# # pl.add(freqs,D*bnu)
+# pl.add(freqs,(sfit),ls="-",label='sfit')
+# pl.add(freqs,(yfit),ls="--",label='yfit')
+# pl.add(freqs,(dfit),ls="--",label='dfit')
+# pl.hline()
+# pl.hline(y=tfit,ls="-",alpha=0.2,label='kSZ')
+# pl.legend()
+# pl.done(io.dout_dir+"apfluxes_fit.png")
+x = np.array([90,150,217,353,545,857])
+aperrs=np.array(aperrs)
+bfit,bcov,chisquare,pte = stats.fit_linear_model(x,apmeans,ycov=np.diag(aperrs**2.), funcs=[lambda x: 1.,lambda x: yflux(x,1.),lambda x: dflux(x,1.)])
+dTfit,Yfit,Dfit = bfit
+edTfit,eYfit,eDfit = np.sqrt(np.diagonal(bcov))
+
+
+print(dT,Y,D)
+print(dTfit,Yfit,Dfit)
+print(dTfit/edTfit,Yfit/eYfit,Dfit/eDfit)
+print(chisquare,pte)
+
+pl = io.Plotter(xlabel="$\\nu$",ylabel="f",yscale='log')
+pl.add(ffreqs,np.abs(yflux(ffreqs,Yfit[0])))
+pl.add(ffreqs,dflux(ffreqs,Dfit[0]))
+pl.add(ffreqs,np.abs(Sflux(ffreqs,Yfit[0],Dfit[0],dTfit[0])))
+pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
 pl.done(io.dout_dir+"apfluxes_fitlog.png")
 
-
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)')
-pl.add_err(fs,(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)# label='Error')
-# pl.add(freqs,TCMB*Y*fnu)
-# pl.add(freqs,D*bnu)
-pl.add(freqs,(sfit),ls="-",label='sfit')
-pl.add(freqs,(yfit),ls="--",label='yfit')
-pl.add(freqs,(dfit),ls="--",label='dfit')
-pl.legend()
-pl.hline()
-# pl.hline(y=tfit,ls="-",alpha=0.2)
-pl.done(io.dout_dir+"apfluxes_fit.png")
 
 # print(apmeans)
 # print(apmeans_lessthan353)

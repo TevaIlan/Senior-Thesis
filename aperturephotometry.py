@@ -13,27 +13,27 @@ from szar import counts
 import scipy
 import healpy as hp
 
-map90location='/Users/Teva/maps and catalog data/f090_daynight_all_map_mono_deep56.fits'
-map150location='/Users/Teva/maps and catalog data/f150_daynight_all_map_mono_deep56.fits'
-map217location='/Users/Teva/maps and catalog data/HFI_SkyMap_217_2048_R2.02_full_cutout_h0.fits'
-map353location='/Users/Teva/maps and catalog data/HFI_SkyMap_353_2048_R2.02_full_cutout_h0.fits'
-map545location='/Users/Teva/maps and catalog data/HFI_SkyMap_545_2048_R2.02_full.fits'
-map857location='/Users/Teva/maps and catalog data/HFI_SkyMap_857_2048_R2.02_full.fits'
+map90location='/Users/Teva/maps and catalog data/f090_night_all2_map_mono.fits'
+map150location='/Users/Teva/maps and catalog data/f150_night_all2_map_mono.fits'
+# map217location='/Users/Teva/maps and catalog data/HFI_SkyMap_217_2048_R2.02_full.fits'
+# map353location='/Users/Teva/maps and catalog data/HFI_SkyMap_353_2048_R2.02_full.fits'
+# map545location='/Users/Teva/maps and catalog data/HFI_SkyMap_545_2048_R2.02_full.fits'
+# map857location='/Users/Teva/maps and catalog data/HFI_SkyMap_857_2048_R2.02_full.fits'
 
 
 lmap90=enmap.read_map(map90location)
 lmap150=enmap.read_map(map150location)
-lmap217=enmap.read_map(map217location)
-lmap353=enmap.read_map(map353location)
-lmap545=hp.read_map(map545location)
-lmap857=hp.read_map(map857location)
+# lmap217=hp.read_map(map217location)
+# lmap353=hp.read_map(map353location)
+# lmap545=hp.read_map(map545location)
+# lmap857=hp.read_map(map857location)
 
 tmap90=lmap90[0]
 tmap150=lmap150[0]
-tmap217=lmap217[0]
-tmap353=lmap353[0]
-tmap545=lmap545[0]
-tmap857=lmap857[0]
+# tmap217=lmap217[0]
+# tmap353=lmap353[0]
+# tmap545=lmap545[0]
+# tmap857=lmap857[0]
 Ny,Nx = tmap90.shape #they have the same shape so it doesn't matter if we use the 90 or 150 map
 
 #cat_location='../maps and catalog data/act_confirmed_clusters.fits'
@@ -84,34 +84,35 @@ for i in range(0,len(catalog)):
 	if ix>=pad and ix<Nx-pad and iy>=pad and iy<Ny-pad:
 		cutout90=maps.cutout(tmap90,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
 		cutout150=maps.cutout(tmap150,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
-		cutout217=maps.cutout(tmap217,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
-		cutout353=maps.cutout(tmap353,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
-		cutout545=maps.cutout(tmap545,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
-		cutout857=maps.cutout(tmap857,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
-		S90=maps.aperture_photometry(instamp=cutout90,aperture_radius=6*np.pi/10800,annulus_width=(150/90)*1.4*np.pi/10800)
-		S90s.append(S90)
-		S150=maps.aperture_photometry(instamp=cutout150,aperture_radius=6*np.pi/10800,annulus_width=1.4*np.pi/10800)
-		S150s.append(S150)
-		S217=maps.aperture_photometry(instamp=cutout217,aperture_radius=17*np.pi/10800,annulus_width=5*np.pi/10800)
-		S217s.append(S217)
-		S353=maps.aperture_photometry(instamp=cutout353,aperture_radius=23*np.pi/10800,annulus_width=5*np.pi/10800)
-		S353s.append(S353)
-		S545=maps.aperture_photometry(instamp=cutout545,aperture_radius=23*np.pi/10800,annulus_width=5*np.pi/10800)
-		S545s.append(S545)
-		S857=maps.aperture_photometry(instamp=cutout857,aperture_radius=23*np.pi/10800,annulus_width=5*np.pi/10800)
-		S857s.append(S857)
-		# Ycalculated=(S90-S150)/(a90-a150)
-		# CalculatedY.append(Ycalculated)
-		#YMeasured=catalog[i][11]
-		#MeasuredY.append(YMeasured)
-		stack90=stack90+cutout90
-		stack150=stack150+cutout150
-		stack217=stack217+cutout217
-		stack353=stack353+cutout353
+		# cutout217=maps.cutout(tmap217,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
+		# cutout353=maps.cutout(tmap353,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
+		# cutout545=maps.cutout(tmap545,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
+		# cutout857=maps.cutout(tmap857,arcmin_width=widthStampArcminute,ra=ra,dec=dec)
+		# S90=maps.aperture_photometry(instamp=cutout90,aperture_radius=6*np.pi/10800,annulus_width=(150/90)*1.4*np.pi/10800)
+		# S90s.append(S90)
+		# S150=maps.aperture_photometry(instamp=cutout150,aperture_radius=6*np.pi/10800,annulus_width=1.4*np.pi/10800)
+		# S150s.append(S150)
+		# S217=maps.aperture_photometry(instamp=cutout217,aperture_radius=17*np.pi/10800,annulus_width=5*np.pi/10800)
+		# S217s.append(S217)
+		# S353=maps.aperture_photometry(instamp=cutout353,aperture_radius=23*np.pi/10800,annulus_width=5*np.pi/10800)
+		# S353s.append(S353)
+		# S545=maps.aperture_photometry(instamp=cutout545,aperture_radius=23*np.pi/10800,annulus_width=5*np.pi/10800)
+		# S545s.append(S545)
+		# S857=maps.aperture_photometry(instamp=cutout857,aperture_radius=23*np.pi/10800,annulus_width=5*np.pi/10800)
+		# S857s.append(S857)
+		# # Ycalculated=(S90-S150)/(a90-a150)
+		# # CalculatedY.append(Ycalculated)
+		# #YMeasured=catalog[i][11]
+		# #MeasuredY.append(YMeasured)
+		# stack90=stack90+cutout90
+		# stack150=stack150+cutout150
+		# stack217=stack217+cutout217
+		# stack353=stack353+cutout353
 		z=catalog[i][4]
 		zvalues.append(z)
 		N=N+1
 print(N)
+print(np.mean(zvalues))
 #print(np.max(MeasuredY), np.min(MeasuredY))
 # frequencies=(90,150,217,353)
 # Fluxes=np.mean(S90s),np.mean(S150s),np.mean(S217s),np.mean(S353s)
