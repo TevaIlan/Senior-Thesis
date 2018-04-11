@@ -111,21 +111,21 @@ freqs = np.arange(30,900,1.)
 fnu = f_nu(freqs)
 bnu = bdust(freqs,zavg)
 
-Y = 7e-16
-D = 3e-17
+# Y = 7e-16
+# D = 3e-17
 
 # Y = 4e-17
 # D = 2e-18
 
-fs = [float(f) for f in freqlist]
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
-pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)
-pl.add(freqs,np.abs(TCMB*Y*fnu),label='$T_{cmb} Y f_{nu}$')
-pl.add(freqs,np.abs(D*bnu),label='$D b_{nu}$')
-pl.add(freqs,np.abs(D*bnu+TCMB*Y*fnu),ls="--", label='$D b_{nu}+ T_{cmb} Y f_{nu}$')
-pl.hline()
-pl.legend()
-pl.done(io.dout_dir+"apfluxes.png")
+# fs = [float(f) for f in freqlist]
+# pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
+# pl.add_err(fs,np.abs(apmeans),yerr=aperrs,marker="o",markersize=8,elinewidth=3)
+# pl.add(freqs,np.abs(TCMB*Y*fnu),label='$T_{cmb} Y f_{nu}$')
+# pl.add(freqs,np.abs(D*bnu),label='$D b_{nu}$')
+# pl.add(freqs,np.abs(D*bnu+TCMB*Y*fnu),ls="--", label='$D b_{nu}+ T_{cmb} Y f_{nu}$')
+# pl.hline()
+# pl.legend()
+# pl.done(io.dout_dir+"apfluxes.png")
 
 
 
@@ -172,20 +172,21 @@ pl.done(io.dout_dir+"apfluxes.png")
 # pl.done(io.dout_dir+"apfluxes_fit.png")
 x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)
+apmeans=np.array(apmeans)
 bfit,bcov,chisquare,pte = stats.fit_linear_model(x,apmeans,ycov=np.diag(aperrs**2.), funcs=[lambda x: 1.,lambda x: yflux(x,1.),lambda x: dflux(x,1.)])
 dTfit,Yfit,Dfit = bfit
 edTfit,eYfit,eDfit = np.sqrt(np.diagonal(bcov))
 
 
-print(dT,Y,D)
+#print(dT,Y,D)
 print(dTfit,Yfit,Dfit)
 print(dTfit/edTfit,Yfit/eYfit,Dfit/eDfit)
 print(chisquare,pte)
 
 pl = io.Plotter(xlabel="$\\nu$",ylabel="f",yscale='log')
-pl.add(ffreqs,np.abs(yflux(ffreqs,Yfit[0])))
-pl.add(ffreqs,dflux(ffreqs,Dfit[0]))
-pl.add(ffreqs,np.abs(Sflux(ffreqs,Yfit[0],Dfit[0],dTfit[0])))
+pl.add(freqs,np.abs(yflux(freqs,Yfit[0])))
+pl.add(freqs,dflux(freqs,Dfit[0]))
+pl.add(freqs,np.abs(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0])))
 pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
 pl.done(io.dout_dir+"apfluxes_fitlog.png")
 
