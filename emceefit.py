@@ -247,7 +247,10 @@ def lnprob(param, nu, S, yerr):
     if not np.isfinite(lp):
         return -np.inf
     return lp + lnlike(param,nu,S,yerr)
+
 freqarray=np.array(freqlist)
+apmeans=np.array(apmeans)
+aperrs=np.array(aperrs)
 ndim, nwalkers = 4, 100
 pos = [result["x"] + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
 import emcee
@@ -269,13 +272,7 @@ sampler.run_mcmc(pos, 500)
 # print(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0]))
 # print(np.abs(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0])))
 
-# pl = io.Plotter(xlabel="$\\nu$",ylabel="f",yscale='log')
-# pl.add(freqs,np.abs(yflux(freqs,Yfit[0])),label='Y')
-# pl.add(freqs,dflux(freqs,Dfit[0]),label="D")
-# pl.add(freqs,np.abs(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0])),label='Fit')
-# pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
-# pl.legend()
-# pl.done(io.dout_dir+"apfluxes_fitlog.png")
+# e
 
 
 # print(apmeans)
