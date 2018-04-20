@@ -150,14 +150,14 @@ bnu = bdust(freqs,zavg)
 
 
 def lnlike(param,nu,S,yerr):
-    Y,D,dT,Teff=param
-    model=TCMB*f_nu(nu)*Y+pref * planck(nu*(1+z),Tdust) / dplanckT(nu)*D+dT+Y * gfuncrel(nu,Teff)
+    Y,D,dT=param
+    model=TCMB*f_nu(nu)*Y+pref * planck(nu*(1+z),Tdust) / dplanckT(nu)*D+dT#+Y * gfuncrel(nu,Teff)
     inv_sigma2 = 1.0/(yerr**2 + model**2)
     return -0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2)))
 
 def lnprior(param):
-    Y,D,dT,Teff=param
-    if -1e-15 < Y < -1e-16 and  1e-17< D < 1e-16 and -1e-16 < dT < 0 and -1e-15 < Teff < 0:
+    Y,D,dT=param
+    if -1e-15 < Y < -1e-16 and  1e-17< D < 1e-16 and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -167,21 +167,23 @@ def lnprob(param, nu, S, yerr):
         return -np.inf
     return lp + lnlike(param,nu,S,yerr)
 
-freqarray=np.array(freqlist)
 
-ndim, nwalkers = 4, 100
-p0 = [np.random.rand(ndim) for i in xrange(nwalkers)]
+ndim, nwalkers = 3, 100
+guess=7e-16,3e-17,0.0
+pos = [guess + 1e-20*np.random.randn(ndim) for i in range(nwalkers)]
+#p0 = [np.random.rand(ndim) for i in xrange(nwalkers)]
 import emcee
-sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqarray, apmeans, aperrs))
-pos, prob, state = sampler.run_mcmc(p0, 200)
-sampler.reset()
+sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperrs))
+#pos, prob, state = sampler.run_mcmc(p0, 200)
+print(pos)
+#print(pos.shape)
+#sampler.reset()
 sampler.run_mcmc(pos, 500)
 samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
 print(samples.shape)
 Y_samples=samples[:,0]
 D_samples=samples[:,0]
 dT_samples=samples[:,0]
-Teff_samples=samples[:,0]
 plt.hist(Y_samples)
 plt.title('Y')
 plt.savefig('Y mcmc values.png')
@@ -194,12 +196,12 @@ plt.hist(dT_samples)
 plt.title('dT')
 plt.savefig('dT mcmc values.png')
 
-plt.hist(Teff_samples)
-plt.title('Teff')
-plt.savefig('Teff mcmc values.png')
+# plt.hist(Teff_samples)
+# plt.title('Teff')
+# plt.savefig('Teff mcmc values.png')
 
 samples[:, 2] = np.exp(samples[:, 2])
-Y_mcmc, D_mcmc, dT_mcmc, Teff_mcmc = map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
+Y_mcmc, D_mcmc, dT_mcmc = map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
                              zip(*np.percentile(samples, [16, 50, 84],
                                                 axis=0)))
-print(Y_mcmc, D_mcmc, dT_mcmc, Teff_mcmc)
+print(Y_mcmc, D_mcmc, dT_mcmc)
