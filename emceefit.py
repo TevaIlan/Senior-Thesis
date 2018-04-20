@@ -5,6 +5,7 @@ from enlib import enmap
 import numpy as np
 import os,sys
 from szar import counts,foregrounds
+import matplotlib.pyplot as plt
 
 
 import argparse
@@ -249,15 +250,46 @@ def lnprob(param, nu, S, yerr):
     return lp + lnlike(param,nu,S,yerr)
 
 freqarray=np.array(freqlist)
-apmeans=np.array(apmeans)
-aperrs=np.array(aperrs)
+# apmeans=np.array(apmeans)
+# aperrs=np.array(aperrs)
+# import scipy.optimize as op
+# nll = lambda *args: -lnlike(*args)
+# result = op.minimize(nll, [Y_true, D_true, dT_true,Teff_true], args=(freqarray, apmeans, aperrs))
 ndim, nwalkers = 4, 100
-pos = [result["x"] + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
+p0 = [np.random.rand(ndim) for i in xrange(nwalkers)]
+#pos = [result["x"] + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
 import emcee
 sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqarray, apmeans, aperrs))
+pos, prob, state = sampler.run_mcmc(p0, 200)
+sampler.reset()
 sampler.run_mcmc(pos, 500)
+samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
+print(samples.shape)
+Y_samples=samples[:,0]
+D_samples=samples[:,0]
+dT_samples=samples[:,0]
+Teff_samples=samples[:,0]
+plt.hist(Y_samples)
+plt.title('Y')
+plt.savefig('Y mcmc values.png')
 
+plt.hist(D_samples)
+plt.title('D')
+plt.savefig('D mcmc values.png')
 
+plt.hist(dT_samples)
+plt.title('dT')
+plt.savefig('dT mcmc values.png')
+
+plt.hist(Teff_samples)
+plt.title('Teff')
+plt.savefig('Teff mcmc values.png')
+
+samples[:, 2] = np.exp(samples[:, 2])
+Y_mcmc, D_mcmc, dT_mcmc, Teff_mcmc = map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
+                             zip(*np.percentile(samples, [16, 50, 84],
+                                                axis=0)))
+print(Y_mcmc, D_mcmc, dT_mcmc, Teff_mcmc)
 #print(dT,Y,D)
 # print(dTfit,Yfit,Dfit)
 # print(dTfit/edTfit,Yfit/eYfit,Dfit/eDfit)
