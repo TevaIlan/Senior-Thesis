@@ -33,7 +33,7 @@ aperrs = []
 for freq in freqlist:
     aps,apwts = np.loadtxt("f"+freq+"_"+args.cat+"_apflux.txt",unpack=True)
 
-    apmean = np.sum(aps*apwts)/np.sum(apwts)
+    apmean = np.sum(aps*appwts)/np.sum(apwts)
     v1 = np.sum(apwts)
     v2 = np.sum(apwts**2.)
     aperr = np.sqrt(np.sum(apwts*(aps-apmean)**2.)/(v1-(v2/v1))) / np.sqrt(aps.size)
@@ -102,7 +102,7 @@ def dflux(fghz,Din):
 def Sflux(fghz,Yin,Din,dT):
     # if Yin<0: return np.nan
     # if Din<0: return np.nan
-    return yflux(fghz,Yin)+dflux(fghz,Din)+dT
+    return yflux(fghz,Yin)+dflux(fghz,Din)#+dT
 
 from scipy.optimize import curve_fit
 
@@ -174,13 +174,13 @@ x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)
 apmeans=np.array(apmeans)
 bfit,bcov,chisquare,pte = stats.fit_linear_model(x,apmeans,ycov=np.diag(aperrs**2.), funcs=[lambda x: 1.,lambda x: yflux(x,1.),lambda x: dflux(x,1.)])
-dTfit,Yfit,Dfit = bfit
-edTfit,eYfit,eDfit = np.sqrt(np.diagonal(bcov))
+Yfit,Dfit = bfit
+eYfit,eDfit = np.sqrt(np.diagonal(bcov))
 
 
 #print(dT,Y,D)
-print(dTfit,Yfit,Dfit)
-print(dTfit/edTfit,Yfit/eYfit,Dfit/eDfit)
+print(Yfit,Dfit)
+print(Yfit/eYfit,Dfit/eDfit)
 print(chisquare,pte)
 print(bcov)
 bcor=stats.cov2corr(bcov)
@@ -195,7 +195,7 @@ print(bcor)
 pl = io.Plotter(xlabel="$\\nu$",ylabel="f",yscale='log')
 pl.add(freqs,np.abs(yflux(freqs,Yfit[0])),label='Y')
 pl.add(freqs,dflux(freqs,Dfit[0]),label="D")
-pl.add(freqs,np.abs(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0])),label='Fit')
+pl.add(freqs,np.abs(Sflux(freqs,Yfit[0],Dfit[0])),label='Fit')
 pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
 pl.legend()
 pl.done(io.dout_dir+"apfluxes_fitlog.png")

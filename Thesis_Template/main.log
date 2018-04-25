@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  19 APR 2018 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 APR 2018 17:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -293,24 +293,24 @@ Chapter 1.
 ]
 Chapter 2.
 
-LaTeX Warning: File `../redmapper z hist.png' not found on input line 27.
+LaTeX Warning: File `../redmapper z hist.png' not found on input line 30.
 
 <../redmapper z hist.png, id=25, 462.528pt x 346.896pt>
 File: ../redmapper z hist.png Graphic file (type png)
 
 <use ../redmapper z hist.png>
-Package pdftex.def Info: ../redmapper z hist.png used on input line 27.
+Package pdftex.def Info: ../redmapper z hist.png used on input line 30.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
 
-LaTeX Warning: File `../redmapper richness hist.png' not found on input line 34
+LaTeX Warning: File `../redmapper richness hist.png' not found on input line 37
 .
 
 <../redmapper richness hist.png, id=27, 462.528pt x 346.896pt>
 File: ../redmapper richness hist.png Graphic file (type png)
 
 <use ../redmapper richness hist.png>
-Package pdftex.def Info: ../redmapper richness hist.png used on input line 34.
+Package pdftex.def Info: ../redmapper richness hist.png used on input line 37.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
 
@@ -363,7 +363,7 @@ local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/lo
 cal/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/loca
 l/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/
 texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (13 pages, 214974 bytes).
+Output written on main.pdf (13 pages, 216703 bytes).
 PDF statistics:
  113 PDF objects out of 1000 (max. 8388607)
  78 compressed objects within 1 object stream

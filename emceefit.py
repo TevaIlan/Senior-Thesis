@@ -1,5 +1,4 @@
 from __future__ import print_function
-from __future__ import print_function
 from orphics import maps,io,cosmology,catalogs,stats,mpi
 from enlib import enmap
 import numpy as np
@@ -15,8 +14,9 @@ args = parser.parse_args()
 
 io.dout_dir += args.cat+"_"
 
-#freqlist = ['90','150','217','353']
-freqlist = ['90','150','217','353','545','857']
+freqlist = ['90','150','217','353']
+sfreqlist = ['90','150','217','353','545','857']
+freqlist = [float(x) for x in sfreqlist]
 lowfreqlist = ['90','150','217']
 highfreqlist = ['353','545','857']
 
@@ -26,7 +26,7 @@ apmeans = []
 aperrs = []
 
 
-for freq in freqlist:
+for freq in sfreqlist:
     aps,apwts = np.loadtxt("f"+freq+"_"+args.cat+"_apflux.txt",unpack=True)
 
     apmean = np.sum(aps*apwts)/np.sum(apwts)
@@ -67,6 +67,10 @@ def bdust(nu_ghz,z):
     nu0 = 353.
     beta = 1.78
     Tdust = 20.
+    print('Hi')
+    print(nu_ghz)
+    print(np.asarray(nu_ghz))
+    print(z)
     pref = (nu_ghz*(1+z)/nu0)**(beta)
     return pref * planck(nu_ghz*(1+z),Tdust) / dplanckT(nu_ghz)
 
@@ -98,7 +102,7 @@ def gfunc(freq,Tcmb=2.7255e6):
   gfunc=Y0
   return gfunc
 
-def gfuncrel(freq,Te,Tcmb=2.7255e6):
+def gfuncrel(freq,Te,Tcmb=2.7255e6): #freq is in Hz not GHz!
   """
   !-----------------------------------------------------------------------------
   ! From J.Colin Hill
@@ -150,12 +154,18 @@ bnu = bdust(freqs,zavg)
 
 
 def lnlike(param,nu,S,yerr):
+    #sys.exit()
     Y,D,dT=param
-    model=TCMB*f_nu(nu)*Y+pref * planck(nu*(1+z),Tdust) / dplanckT(nu)*D+dT#+Y * gfuncrel(nu,Teff)
+    nu=np.asarray(nu)
+    model=yflux(nu,Y)+dflux(nu,D)+dT#+Y * gfuncrel(nu,Teff)
+    yerr=np.asarray(yerr)
     inv_sigma2 = 1.0/(yerr**2 + model**2)
+    #print(param,-0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2))))
+
     return -0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2)))
 
 def lnprior(param):
+    #sys.exit()
     Y,D,dT=param
     if -1e-15 < Y < -1e-16 and  1e-17< D < 1e-16 and -1e-16 < dT < 0:
         return 0.0
@@ -168,33 +178,63 @@ def lnprob(param, nu, S, yerr):
     return lp + lnlike(param,nu,S,yerr)
 
 
-ndim, nwalkers = 3, 100
-guess=7e-16,3e-17,0.0
-pos = [guess + 1e-20*np.random.randn(ndim) for i in range(nwalkers)]
-#p0 = [np.random.rand(ndim) for i in xrange(nwalkers)]
+ndim, nwalkers = 3, 20
+guess=np.array([-7e-16,3e-17,-5e-17])
+pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
+#print(pos[0],pos[1])
+#sys.exit()
 import emcee
 sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperrs))
-#pos, prob, state = sampler.run_mcmc(p0, 200)
-print(pos)
-#print(pos.shape)
-#sampler.reset()
-sampler.run_mcmc(pos, 500)
+
+
+sampler.run_mcmc(pos, 50000)
+rawsamples=sampler.chain[:,:, :]
+np.save("samples.npy",rawsamples)
 samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
 print(samples.shape)
-Y_samples=samples[:,0]
-D_samples=samples[:,0]
-dT_samples=samples[:,0]
-plt.hist(Y_samples)
+Y_samples=rawsamples[:,:,0]
+
+D_samples=rawsamples[:,:,1]
+dT_samples=rawsamples[:,:,2]
+print(Y_samples)
+plt.hist(Y_samples.reshape(-1))
 plt.title('Y')
 plt.savefig('Y mcmc values.png')
 
-plt.hist(D_samples)
-plt.title('D')
-plt.savefig('D mcmc values.png')
+# plt.hist(D_samples)
+# plt.title('D')
+# plt.savefig('D mcmc values.png')
 
-plt.hist(dT_samples)
-plt.title('dT')
-plt.savefig('dT mcmc values.png')
+# plt.hist(dT_samples)
+# plt.title('dT')
+# plt.savefig('dT mcmc values.png')
+
+for i in range(nwalkers):
+    plt.plot(Y_samples[i,:])
+    print(Y_samples[i,:])
+ymin=np.min(Y_samples)
+ymax=np.max(Y_samples)
+plt.ylim(ymin,ymax)
+plt.title('Y')
+plt.savefig('Y mcmc chain.png')
+
+# for i in range(nwalkers):
+#     plt.plot(D_samples)
+# ymin=np.min(D_samples)
+# ymax=np.max(D_samples)
+# plt.ylim(ymin,ymax)
+# plt.title('D')
+# plt.savefig('D mcmc chain.png')
+
+# plt.plot(dT_samples)
+# ymin=np.min(dT_samples)
+# ymax=np.max(dT_samples)
+# plt.ylim(ymin,ymax)
+# plt.title('dT')
+# plt.savefig('dT mcmc chain.png')
+
+# plt.contour(Y_samples,D_samples)
+# plt.savefig('contour.png')
 
 # plt.hist(Teff_samples)
 # plt.title('Teff')
