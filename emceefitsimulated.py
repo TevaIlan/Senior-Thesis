@@ -162,7 +162,6 @@ def lnlike(param,nu,S,yerr):
     yerr=np.asarray(yerr)
     inv_sigma2 = 1.0/(yerr**2 + model**2)
     #print(param,-0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2))))
-
     return -0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2)))
 
 def lnprior(param):
@@ -195,7 +194,9 @@ ynoise = np.random.normal(0.,scale=yerrs)
 ysyn += ynoise
 
 
-
+param=6.9e-16,2.9e-17
+print(lnlike(param,freqlist, ysyn, yerrs))
+sys.exit()
 import emcee
 sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, ysyn, yerrs))
 
@@ -259,3 +260,10 @@ Y_mcmc, D_mcmc= map(lambda v: (v[1], v[1]-v[0]),
                              zip(*np.percentile(samples, [16, 50, 84],
                                                 axis=0)))
 print(Y_mcmc, D_mcmc)
+print(np.mean(Y_samples))
+print(np.mean(D_samples))
+
+import corner
+fig = corner.corner(samples, labels=["$m$", "$b$"],
+                      truths=[Y, D])
+fig.savefig("triangle.png")
