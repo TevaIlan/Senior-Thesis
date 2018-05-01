@@ -200,10 +200,10 @@ pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 
 #Uncomment this area later
 import emcee
-sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperr))
+sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperrs))
 
 
-sampler.run_mcmc(pos, 500000)
+sampler.run_mcmc(pos, 50000)
 rawsamples=sampler.chain[:,:, :]
 np.save("../samples.npy",rawsamples)
 samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
@@ -308,5 +308,5 @@ fig = corner.corner(samples, labels=["$Y$", "$D$"])#,
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])
-fig.savefig("triangle500000.png")
+fig.savefig("triangle50000.png")
 #fig1.savefig("simulatedtriangle50000.png")

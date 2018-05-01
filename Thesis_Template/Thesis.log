@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  30 APR 2018 22:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 MAY 2018 12:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -654,24 +654,24 @@ Chapter 1.
 ]
 Chapter 2.
 
-LaTeX Warning: File `../redmapper z hist.png' not found on input line 32.
+LaTeX Warning: File `../redmapper z hist.png' not found on input line 34.
 
 <../redmapper z hist.png, id=25, 462.528pt x 346.896pt>
 File: ../redmapper z hist.png Graphic file (type png)
 
 <use ../redmapper z hist.png>
-Package pdftex.def Info: ../redmapper z hist.png used on input line 32.
+Package pdftex.def Info: ../redmapper z hist.png used on input line 34.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
 
-LaTeX Warning: File `../redmapper richness hist.png' not found on input line 39
+LaTeX Warning: File `../redmapper richness hist.png' not found on input line 41
 .
 
 <../redmapper richness hist.png, id=27, 462.528pt x 346.896pt>
 File: ../redmapper richness hist.png Graphic file (type png)
 
 <use ../redmapper richness hist.png>
-Package pdftex.def Info: ../redmapper richness hist.png used on input line 39.
+Package pdftex.def Info: ../redmapper richness hist.png used on input line 41.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
 
@@ -684,7 +684,7 @@ Chapter 3.
 <../gnu.png, id=40, 462.528pt x 346.896pt>
 File: ../gnu.png Graphic file (type png)
  <use ../gnu.png>
-Package pdftex.def Info: ../gnu.png used on input line 66.
+Package pdftex.def Info: ../gnu.png used on input line 68.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
  [4
 
@@ -692,24 +692,24 @@ Package pdftex.def Info: ../gnu.png used on input line 66.
 <../bdust.png, id=49, 462.528pt x 346.896pt>
 File: ../bdust.png Graphic file (type png)
  <use ../bdust.png>
-Package pdftex.def Info: ../bdust.png used on input line 73.
+Package pdftex.def Info: ../bdust.png used on input line 75.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
 <../f90_redmapper_wstack.png, id=50, 399.6531pt x 322.3242pt>
 File: ../f90_redmapper_wstack.png Graphic file (type png)
 
 <use ../f90_redmapper_wstack.png>
-Package pdftex.def Info: ../f90_redmapper_wstack.png used on input line 85.
+Package pdftex.def Info: ../f90_redmapper_wstack.png used on input line 87.
 (pdftex.def)             Requested size: 200.0pt x 161.30432pt.
 
 <../f150_redmapper_wstack.png, id=51, 399.6531pt x 322.3242pt>
 File: ../f150_redmapper_wstack.png Graphic file (type png)
 
 <use ../f150_redmapper_wstack.png>
-Package pdftex.def Info: ../f150_redmapper_wstack.png used on input line 90.
+Package pdftex.def Info: ../f150_redmapper_wstack.png used on input line 92.
 (pdftex.def)             Requested size: 200.0pt x 161.30432pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 90--91
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 92--93
  [][] 
  []
 
@@ -717,17 +717,17 @@ Overfull \hbox (156.63536pt too wide) in paragraph at lines 90--91
 File: ../f217_redmapper_wstack.png Graphic file (type png)
 
 <use ../f217_redmapper_wstack.png>
-Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 94.
+Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 96.
 (pdftex.def)             Requested size: 200.0pt x 159.49992pt.
 
 <../f353_redmapper_wstack.png, id=53, 391.7034pt x 321.6015pt>
 File: ../f353_redmapper_wstack.png Graphic file (type png)
 
 <use ../f353_redmapper_wstack.png>
-Package pdftex.def Info: ../f353_redmapper_wstack.png used on input line 98.
+Package pdftex.def Info: ../f353_redmapper_wstack.png used on input line 100.
 (pdftex.def)             Requested size: 200.0pt x 164.21088pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 98--99
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 100--101
  [][] 
  []
 
@@ -735,17 +735,17 @@ Overfull \hbox (156.63536pt too wide) in paragraph at lines 98--99
 File: ../f545_redmapper_wstack.png Graphic file (type png)
 
 <use ../f545_redmapper_wstack.png>
-Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 102.
+Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 104.
 (pdftex.def)             Requested size: 200.0pt x 160.94266pt.
 
 <../f857_redmapper_wstack.png, id=55, 414.8298pt x 321.6015pt>
 File: ../f857_redmapper_wstack.png Graphic file (type png)
 
 <use ../f857_redmapper_wstack.png>
-Package pdftex.def Info: ../f857_redmapper_wstack.png used on input line 106.
+Package pdftex.def Info: ../f857_redmapper_wstack.png used on input line 108.
 (pdftex.def)             Requested size: 200.0pt x 155.04906pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 106--107
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 108--109
  [][] 
  []
 
@@ -759,7 +759,7 @@ Chapter 4.
 File: ../redmapper_apfluxes_fitlog_earlier_version.png Graphic file (type png)
  <use ../redmapper_apfluxes_fitlog_earlier_version.png>
 Package pdftex.def Info: ../redmapper_apfluxes_fitlog_earlier_version.png used 
-on input line 115.
+on input line 117.
 (pdftex.def)             Requested size: 216.81pt x 154.90576pt.
  [7
 
@@ -805,7 +805,7 @@ e/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis.pdf (14 pages, 546593 bytes).
+Output written on Thesis.pdf (14 pages, 546950 bytes).
 PDF statistics:
  138 PDF objects out of 1000 (max. 8388607)
  83 compressed objects within 1 object stream
