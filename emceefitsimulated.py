@@ -205,7 +205,7 @@ sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans,
 
 sampler.run_mcmc(pos, 500000)
 rawsamples=sampler.chain[:,:, :]
-np.save("samples.npy",rawsamples)
+np.save("../samples.npy",rawsamples)
 samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
 print(samples.shape)
 Y_samples=rawsamples[:,:,0]
@@ -282,7 +282,7 @@ yerrs = 0.25*np.abs(ysyn)
 ynoise = np.random.normal(0.,scale=yerrs)
 ysyn += ynoise
 
-# param=6.9e-16,2.9e-17
+# param=-7.96871772e-17,5.74833793e-18
 # print(lnlike(param,freqlist, ysyn, yerrs))
 # sys.exit()
 

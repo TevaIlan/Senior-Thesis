@@ -33,7 +33,7 @@ aperrs = []
 for freq in freqlist:
     aps,apwts = np.loadtxt("f"+freq+"_"+args.cat+"_apflux.txt",unpack=True)
 
-    apmean = np.sum(aps*appwts)/np.sum(apwts)
+    apmean = np.sum(aps*apwts)/np.sum(apwts)
     v1 = np.sum(apwts)
     v2 = np.sum(apwts**2.)
     aperr = np.sqrt(np.sum(apwts*(aps-apmean)**2.)/(v1-(v2/v1))) / np.sqrt(aps.size)
@@ -99,7 +99,7 @@ def yflux(fghz,Yin):
     return TCMB*f_nu(fghz)*Yin
 def dflux(fghz,Din):
     return bdust(fghz,zavg)*Din
-def Sflux(fghz,Yin,Din,dT):
+def Sflux(fghz,Yin,Din):
     # if Yin<0: return np.nan
     # if Din<0: return np.nan
     return yflux(fghz,Yin)+dflux(fghz,Din)#+dT
@@ -173,7 +173,7 @@ bnu = bdust(freqs,zavg)
 x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)
 apmeans=np.array(apmeans)
-bfit,bcov,chisquare,pte = stats.fit_linear_model(x,apmeans,ycov=np.diag(aperrs**2.), funcs=[lambda x: 1.,lambda x: yflux(x,1.),lambda x: dflux(x,1.)])
+bfit,bcov,chisquare,pte = stats.fit_linear_model(x,apmeans,ycov=np.diag(aperrs**2.), funcs=[lambda x: yflux(x,1.),lambda x: dflux(x,1.)])
 Yfit,Dfit = bfit
 eYfit,eDfit = np.sqrt(np.diagonal(bcov))
 
