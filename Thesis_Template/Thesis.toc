@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {3.1}The tSZ Effect}{4}
 \contentsline {section}{\numberline {3.2}Aperture Photometry}{4}
 \contentsline {section}{\numberline {3.3}Stacking}{5}
-\contentsline {chapter}{\numberline {4}Results}{6}
-\contentsline {chapter}{\numberline {5}Discussion and Conclusion}{7}
-\contentsline {chapter}{\numberline {6}Future Research}{8}
-\contentsline {chapter}{\numberline {7}References}{9}
+\contentsline {chapter}{\numberline {4}Results}{7}
+\contentsline {chapter}{\numberline {5}Discussion and Conclusion}{8}
+\contentsline {chapter}{\numberline {6}Future Research}{9}
+\contentsline {chapter}{\numberline {7}References}{10}

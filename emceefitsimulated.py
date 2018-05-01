@@ -167,7 +167,7 @@ def lnlike(param,nu,S,yerr):
 def lnprior(param):
     #sys.exit()
     Y,D=param
-    if 1e-16 < Y < 1e-15 and  1e-19< D < 5e-16:# and -1e-16 < dT < 0:
+    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 

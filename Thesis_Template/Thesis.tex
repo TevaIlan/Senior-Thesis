@@ -4,6 +4,8 @@
 \RequirePackage{setspace}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{caption,subcaption}
 \graphicspath{ {/Users/Teva/Senior-Thesis} }
 %these can be specified in your .cls file if you want the main.tex file to look cleaner
 \author{Teva Ilan}
@@ -62,7 +64,7 @@ We do a weighted sum of the aperture photometry values for all the clusters at e
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../gnu.png}
-\caption{This plot shows $g(\nu)$ as a function of frequency. }
+\caption{This plot shows $g(\nu)$ as a function of frequency and for different values of $T_{eff}$. }
 %\label{$g(\nu)$}
 \end{figure}
 
@@ -76,6 +78,36 @@ We do a weighted sum of the aperture photometry values for all the clusters at e
 
 \section{Stacking}
 In addition to doing this aperture photometry, we also use rectangular cutouts of the maps centered on the clusters as the to create unweighted and weighted stacks. These stacks provide a visual representation of the SZ effect at the different frequencies. Additionally ,the mean of the aperture photometry values of all the clusters at a given frequency should be the same as the aperture photometry values of the corresponding stacks. Thus, we were able to use the stacks to confirm our aperture photometry methodology. 
+\begin{figure}[ht]
+  \centering
+  \textbf{RedMaPPer Stacks}\par\medskip
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering\includegraphics[width=200pt]{../f90_redmapper_wstack.png}
+    \caption{\label{fig:fig1}}
+  \end{subfigure}
+  %\newline
+  \begin{subfigure}[b]{0.1\linewidth}
+    \centering\includegraphics[width=200pt]{../f150_redmapper_wstack.png}
+    \caption{\label{fig:fig2}}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \centering\includegraphics[width=200pt]{../f217_redmapper_wstack.png}
+    \caption{\label{fig:fig3}}
+  \end{subfigure}
+ \begin{subfigure}[b]{0.1\linewidth}
+    \centering\includegraphics[width=200pt]{../f353_redmapper_wstack.png}
+    \caption{\label{fig:fig3}}
+  \end{subfigure}
+ \begin{subfigure}[b]{0.5\linewidth}
+    \centering\includegraphics[width=200pt]{../f545_redmapper_wstack.png}
+    \caption{\label{fig:fig3}}
+  \end{subfigure}
+   \begin{subfigure}[b]{0.1\linewidth}
+    \centering\includegraphics[width=200pt]{../f857_redmapper_wstack.png}
+    \caption{\label{fig:fig3}}
+  \end{subfigure}
+  \caption{This shows the weighted stack stamp plots the RedMaPPer catalog. The 90 GHz and 150 GHz (subfigures a and b respectively) are on the ACT maps while the 217, 353, 545, and 857 GHz maps (subfigures c, d, e, and f respectively) are on the Planck maps. }
+\end{figure}
 \chapter{Results}
 Before doing the mcmc fitting, we performed a linear fit to the data by minimizing chi-squared. Here we only fit for two parameters, the Compton-y parameter and the integrated amplitude of the dust emission. Using this fit we found that $Y^{cyl}_{c}=7.96871772*10^{-17}$ and $D_c=5.74833793*10^{-18}$. This fit is plotted in the figure below.
 \begin{figure}[h]
