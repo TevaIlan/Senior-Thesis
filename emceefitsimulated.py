@@ -26,18 +26,18 @@ apmeans = []
 aperrs = []
 
 
-# for freq in sfreqlist:
-#     aps,apwts = np.loadtxt("f"+freq+"_"+args.cat+"_apflux.txt",unpack=True)
+for freq in sfreqlist:
+    aps,apwts = np.loadtxt("f"+freq+"_"+args.cat+"_apflux.txt",unpack=True)
 
-#     apmean = np.sum(aps*apwts)/np.sum(apwts)
-#     v1 = np.sum(apwts)
-#     v2 = np.sum(apwts**2.)
-#     aperr = np.sqrt(np.sum(apwts*(aps-apmean)**2.)/(v1-(v2/v1))) / np.sqrt(aps.size)
+    apmean = np.sum(aps*apwts)/np.sum(apwts)
+    v1 = np.sum(apwts)
+    v2 = np.sum(apwts**2.)
+    aperr = np.sqrt(np.sum(apwts*(aps-apmean)**2.)/(v1-(v2/v1))) / np.sqrt(aps.size)
     
     
-#     print(freq, " S/N :",apmean/aperr)
-#     apmeans.append(apmean/1e6)
-#     aperrs.append(aperr/1e6)
+    print(freq, " S/N :",apmean/aperr)
+    apmeans.append(apmean/1e6)
+    aperrs.append(aperr/1e6)
   
 
 
@@ -160,14 +160,14 @@ def lnlike(param,nu,S,yerr):
     nu=np.asarray(nu)
     model=yflux(nu,Y)+dflux(nu,D)#+Y * gfuncrel(nu,Teff)
     yerr=np.asarray(yerr)
-    inv_sigma2 = 1.0/(yerr**2 + model**2)
+    inv_sigma2 = 1.0/(yerr**2)
     #print(param,-0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2))))
-    return -0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2)))
+    return -0.5*(np.sum((S-model)**2*inv_sigma2- np.log(inv_sigma2)))
 
 def lnprior(param):
     #sys.exit()
     Y,D=param
-    if 1e-16 < Y < 1e-15 and  1e-17< D < 1e-16:# and -1e-16 < dT < 0:
+    if -1e-16 < Y < -1e-17 and  1e-18< D < 1e-17:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -179,29 +179,31 @@ def lnprob(param, nu, S, yerr):
 
 
 ndim, nwalkers = 2, 20
-guess=np.array([2e-16,8e-17])
+guess=np.array([-7.96871772e-17,5.74833793e-18])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
 
-Y = 7e-16
-D = 3e-17
+# Y = 7e-16
+# D = 3e-17
 
 #dT = 0.
-ysyn = Sflux(freqlist,Y,D)
-yerrs = 0.3*np.abs(ysyn)
-ynoise = np.random.normal(0.,scale=yerrs)
-ysyn += ynoise
+# ysyn = Sflux(freqlist,Y,D)
+# yerrs = 0.3*np.abs(ysyn)
+# ynoise = np.random.normal(0.,scale=yerrs)
+# ysyn += ynoise
 
 
-param=6.9e-16,2.9e-17
-print(lnlike(param,freqlist, ysyn, yerrs))
-sys.exit()
+# param=6.9e-16,2.9e-17
+# print(lnlike(param,freqlist, ysyn, yerrs))
+# sys.exit()
+
+#Uncomment this area later
 import emcee
-sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, ysyn, yerrs))
+sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperr))
 
 
-sampler.run_mcmc(pos, 50000)
+sampler.run_mcmc(pos, 500000)
 rawsamples=sampler.chain[:,:, :]
 np.save("samples.npy",rawsamples)
 samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
@@ -240,6 +242,7 @@ ymax=np.max(D_samples)
 plt.ylim(ymin,ymax)
 plt.title('D')
 plt.savefig('D mcmc chain.png')
+#Uncomment this area later
 
 # plt.plot(dT_samples)
 # ymin=np.min(dT_samples)
@@ -255,15 +258,51 @@ plt.savefig('D mcmc chain.png')
 # plt.title('Teff')
 # plt.savefig('Teff mcmc values.png')
 
-samples[:, 1] = np.exp(samples[:, 1])
+#samples[:, 1] = np.exp(samples[:, 1])
 Y_mcmc, D_mcmc= map(lambda v: (v[1], v[1]-v[0]),
                              zip(*np.percentile(samples, [16, 50, 84],
                                                 axis=0)))
 print(Y_mcmc, D_mcmc)
 print(np.mean(Y_samples))
 print(np.mean(D_samples))
+#print('Hi')
+
+
+
+# Y = 4.5e-17
+# D = 9e-18
+Y = -7.96871772e-17
+D = 5.74833793e-18
+
+
+dT = 0.
+ysyn = Sflux(freqlist,Y,D)
+yerrs = 0.25*np.abs(ysyn)
+#yerrs = 0.01*np.abs(ysyn)
+ynoise = np.random.normal(0.,scale=yerrs)
+ysyn += ynoise
+
+# param=6.9e-16,2.9e-17
+# print(lnlike(param,freqlist, ysyn, yerrs))
+# sys.exit()
+
+sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, ysyn, yerrs))
+sampler.run_mcmc(pos, 50000)
+sim_samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
+
+plt.close()
+plt.errorbar(freqlist,np.abs(apmeans),aperrs,label='data',marker='o')
+plt.errorbar(freqlist,np.abs(ysyn),yerrs,label='simulated',marker='o')
+plt.legend()
+plt.yscale('log')
+plt.savefig('simulated and data.png')
+print(aperrs)
+print(yerrs)
 
 import corner
-fig = corner.corner(samples, labels=["$m$", "$b$"],
-                      truths=[Y, D])
-fig.savefig("triangle.png")
+fig = corner.corner(samples, labels=["$Y$", "$D$"])#,
+                     #truths=[Y, D])
+fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
+                     truths=[Y, D])
+fig.savefig("triangle500000.png")
+fig1.savefig("simulatedtriangle.png")
