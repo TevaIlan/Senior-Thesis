@@ -167,7 +167,7 @@ def lnlike(param,nu,S,yerr):
 def lnprior(param):
     #sys.exit()
     Y,D=param
-    if -1e-15 < Y < -1e-17 and  1e-18< D < 1e-17:# and -1e-16 < dT < 0:
+    if 1e-17 < Y < 1e-16 and  5e-18< D < 5e-17:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -179,7 +179,7 @@ def lnprob(param, nu, S, yerr):
 
 
 ndim, nwalkers = 2, 20
-guess=np.array([-7.96871772e-17,5.74833793e-18])
+guess=np.array([4.5e-17,9e-18])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
@@ -200,48 +200,48 @@ pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 
 #Uncomment this area later
 import emcee
-sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperr))
+# sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(freqlist, apmeans, aperr))
 
 
-sampler.run_mcmc(pos, 500000)
-rawsamples=sampler.chain[:,:, :]
-np.save("../samples.npy",rawsamples)
-samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
-print(samples.shape)
-Y_samples=rawsamples[:,:,0]
+# sampler.run_mcmc(pos, 500000)
+# rawsamples=sampler.chain[:,:, :]
+# np.save("../samples.npy",rawsamples)
+# samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
+# print(samples.shape)
+# Y_samples=rawsamples[:,:,0]
 
-D_samples=rawsamples[:,:,1]
-#dT_samples=rawsamples[:,:,2]
-#print(Y_samples)
-plt.hist(Y_samples.reshape(-1))
-plt.title('Y')
-plt.savefig('Y mcmc values.png')
-plt.close()
+# D_samples=rawsamples[:,:,1]
+# #dT_samples=rawsamples[:,:,2]
+# #print(Y_samples)
+# plt.hist(Y_samples.reshape(-1))
+# plt.title('Y')
+# plt.savefig('Y mcmc values.png')
+# plt.close()
 
-plt.hist(D_samples.reshape(-1))
-plt.title('D')
-plt.savefig('D mcmc values.png')
+# plt.hist(D_samples.reshape(-1))
+# plt.title('D')
+# plt.savefig('D mcmc values.png')
 
-# plt.hist(dT_samples)
-# plt.title('dT')
-# plt.savefig('dT mcmc values.png')
+# # plt.hist(dT_samples)
+# # plt.title('dT')
+# # plt.savefig('dT mcmc values.png')
 
-for i in range(nwalkers):
-    plt.plot(Y_samples[i,:])
-    #print(Y_samples[i,:])
-ymin=np.min(Y_samples)
-ymax=np.max(Y_samples)
-plt.ylim(ymin,ymax)
-plt.title('Y')
-plt.savefig('Y mcmc chain.png')
+# for i in range(nwalkers):
+#     plt.plot(Y_samples[i,:])
+#     #print(Y_samples[i,:])
+# ymin=np.min(Y_samples)
+# ymax=np.max(Y_samples)
+# plt.ylim(ymin,ymax)
+# plt.title('Y')
+# plt.savefig('Y mcmc chain.png')
 
-for i in range(nwalkers):
-    plt.plot(D_samples[i,:])
-ymin=np.min(D_samples)
-ymax=np.max(D_samples)
-plt.ylim(ymin,ymax)
-plt.title('D')
-plt.savefig('D mcmc chain.png')
+# for i in range(nwalkers):
+#     plt.plot(D_samples[i,:])
+# ymin=np.min(D_samples)
+# ymax=np.max(D_samples)
+# plt.ylim(ymin,ymax)
+# plt.title('D')
+# plt.savefig('D mcmc chain.png')
 #Uncomment this area later
 
 # plt.plot(dT_samples)
@@ -259,20 +259,20 @@ plt.savefig('D mcmc chain.png')
 # plt.savefig('Teff mcmc values.png')
 
 #samples[:, 1] = np.exp(samples[:, 1])
-Y_mcmc, D_mcmc= map(lambda v: (v[1], v[1]-v[0]),
-                             zip(*np.percentile(samples, [16, 50, 84],
-                                                axis=0)))
-print(Y_mcmc, D_mcmc)
-print(np.mean(Y_samples))
-print(np.mean(D_samples))
+# Y_mcmc, D_mcmc= map(lambda v: (v[1], v[1]-v[0]),
+#                              zip(*np.percentile(samples, [16, 50, 84],
+#                                                 axis=0)))
+# print(Y_mcmc, D_mcmc)
+# print(np.mean(Y_samples))
+# print(np.mean(D_samples))
 #print('Hi')
 
 
 
-# Y = 4.5e-17
-# D = 9e-18
-Y = -7.96871772e-17
-D = 5.74833793e-18
+Y = 4.5e-17
+D = 9e-18
+# Y = -7.96871772e-17
+# D = 5.74833793e-18
 
 
 dT = 0.
@@ -300,9 +300,9 @@ print(aperrs)
 print(yerrs)
 
 import corner
-fig = corner.corner(samples, labels=["$Y$", "$D$"])#,
+#fig = corner.corner(samples, labels=["$Y$", "$D$"])#,
                      #truths=[Y, D])
 fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
-                     truths=[Y, D])
-fig.savefig("triangle500000.png")
-fig1.savefig("simulatedtriangle.png")
+                      truths=[Y, D])
+#fig.savefig("triangle500000.png")
+fig1.savefig("simulatedtriangle500000.png")
