@@ -306,7 +306,7 @@ print(yerrs)
 import corner
 fig = corner.corner(samples, labels=["$Y$", "$D$"])#,
                      #truths=[Y, D])
-fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
-                      truths=[Y, D])
+#fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
+                      #truths=[Y, D])
 fig.savefig("triangle500000.png")
 #fig1.savefig("simulatedtriangle50000.png")
