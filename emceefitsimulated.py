@@ -86,8 +86,8 @@ def f_nu(nu):
 zavg = 0.36315244
 
 TCMB = 2.7255
-def yflux(fghz,Yin):
-    return TCMB*f_nu(fghz)*Yin
+def yflux(fghz,Yin,Teff):
+    return TCMB*gfuncrel(fghz*1e9,Teff)*Yin
 def dflux(fghz,Din):
     return bdust(fghz,zavg)*Din
 def Sflux(fghz,Yin,Din):
@@ -156,9 +156,9 @@ bnu = bdust(freqs,zavg)
 
 def lnlike(param,nu,S,yerr): 
     #sys.exit()
-    Y,D=param
+    Y,D,Teff=param
     nu=np.asarray(nu)
-    model=yflux(nu,Y)+dflux(nu,D)#+Y * gfuncrel(nu,Teff)
+    model=yflux(nu,Y,Teff)+dflux(nu,D)+Y * gfuncrel(nu*1e9,Teff)
     yerr=np.asarray(yerr)
     inv_sigma2 = 1.0/(yerr**2)
     #print(param,-0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2))))
@@ -166,8 +166,8 @@ def lnlike(param,nu,S,yerr):
 
 def lnprior(param):
     #sys.exit()
-    Y,D=param
-    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16:# and -1e-16 < dT < 0:
+    Y,D,Teff=param
+    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16 and 0< Teff <1e-14:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -178,8 +178,8 @@ def lnprob(param, nu, S, yerr):
     return lp + lnlike(param,nu,S,yerr)
 
 
-ndim, nwalkers = 2, 20
-guess=np.array([5e-16,8e-18])
+ndim, nwalkers = 3, 20
+guess=np.array([5e-16,8e-18, 1e-30])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
@@ -211,6 +211,7 @@ print(samples.shape)
 Y_samples=rawsamples[:,:,0]
 
 D_samples=rawsamples[:,:,1]
+Teff_samples=rawsamples[:,:,2]
 #dT_samples=rawsamples[:,:,2]
 #print(Y_samples)
 plt.hist(Y_samples.reshape(-1))
@@ -221,7 +222,11 @@ plt.close()
 plt.hist(D_samples.reshape(-1))
 plt.title('D')
 plt.savefig('D mcmc values.png')
+plt.close()
 
+plt.hist(Teff_samples.reshape(-1))
+plt.title('Teff')
+plt.savefig('Teff mcmc values.png')
 # plt.hist(dT_samples)
 # plt.title('dT')
 # plt.savefig('dT mcmc values.png')
@@ -236,12 +241,12 @@ plt.title('Y')
 plt.savefig('Y mcmc chain.png')
 
 for i in range(nwalkers):
-    plt.plot(D_samples[i,:])
-ymin=np.min(D_samples)
-ymax=np.max(D_samples)
+    plt.plot(Teff_samples[i,:])
+ymin=np.min(Teff_samples)
+ymax=np.max(Teff_samples)
 plt.ylim(ymin,ymax)
-plt.title('D')
-plt.savefig('D mcmc chain.png')
+plt.title('Teff')
+plt.savefig('Teff mcmc chain.png')
 #Uncomment this area later
 
 # plt.plot(dT_samples)
@@ -259,12 +264,13 @@ plt.savefig('D mcmc chain.png')
 # plt.savefig('Teff mcmc values.png')
 
 #samples[:, 1] = np.exp(samples[:, 1])
-Y_mcmc, D_mcmc= map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
+Y_mcmc, D_mcmc, Teff_mcmc= map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
                              zip(*np.percentile(samples, [16, 50, 84],
                                                 axis=0)))
-print(Y_mcmc, D_mcmc)
+print(Y_mcmc, D_mcmc,Teff_mcmc)
 print(np.mean(Y_samples))
 print(np.mean(D_samples))
+print(np.mean(Teff_samples))
 #print('Hi')
 
 
@@ -277,12 +283,12 @@ Y = 5e-16
 D = 8e-18
 
 
-dT = 0.
-ysyn = Sflux(freqlist,Y,D)
-yerrs = 0.25*np.abs(ysyn)
-#yerrs = 0.01*np.abs(ysyn)
-ynoise = np.random.normal(0.,scale=yerrs)
-ysyn += ynoise
+# dT = 0.
+# ysyn = Sflux(freqlist,Y,D)
+# yerrs = 0.25*np.abs(ysyn)
+# #yerrs = 0.01*np.abs(ysyn)
+# ynoise = np.random.normal(0.,scale=yerrs)
+# ysyn += ynoise
 
 # param=-7.96871772e-17,5.74833793e-18
 # print(lnlike(param,freqlist, ysyn, yerrs))
@@ -294,17 +300,17 @@ ysyn += ynoise
 # sim_samples = sampler.chain[:, 50:, :].reshape((-1, ndim))
 # #uncomment if you want simulated corner plots
 
-plt.close()
-plt.errorbar(freqlist,np.abs(apmeans),aperrs,label='data',marker='o')
-plt.errorbar(freqlist,np.abs(ysyn),yerrs,label='simulated',marker='o')
-plt.legend()
-plt.yscale('log')
-plt.savefig('simulated and data.png')
-print(aperrs)
-print(yerrs)
+# plt.close()
+# plt.errorbar(freqlist,np.abs(apmeans),aperrs,label='data',marker='o')
+# plt.errorbar(freqlist,np.abs(ysyn),yerrs,label='simulated',marker='o')
+# plt.legend()
+# plt.yscale('log')
+# plt.savefig('simulated and data.png')
+# print(aperrs)
+# print(yerrs)
 
 import corner
-fig = corner.corner(samples, labels=["$Y$", "$D$"])#,
+fig = corner.corner(samples, labels=["$Y$", "$D$", "$Teff$"])#,
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])
