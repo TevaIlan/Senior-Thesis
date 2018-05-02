@@ -167,7 +167,7 @@ def lnlike(param,nu,S,yerr):
 def lnprior(param):
     #sys.exit()
     Y,D,dT=param
-    if  -1e-15 < Y < 1e-15 and  1e-19< D < 1.25e-17 and -1e-14 < dT <1e-14:# and -1e-16 < dT < 0:
+    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16 and -1e-17 < dT <1e-17:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -322,7 +322,7 @@ fig = corner.corner(samples, labels=["$Y$", "$D$", "$kSZ$"])#,
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])
-fig.savefig("trianglekSZ50000.png")
+fig.savefig("BulkkSZplot.png")
 #fig1.savefig("simulatedtriangle50000.png")
 x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)

@@ -86,12 +86,12 @@ def f_nu(nu):
 zavg = 0.36315244
 
 TCMB = 2.7255
-def yflux(fghz,Yin,Teff):
-    return TCMB*gfuncrel(fghz*1e9,Teff)*Yin
+def yflux(fghz,Yin):
+    return TCMB*f_nu(fghz)*Yin
 def dflux(fghz,Din):
     return bdust(fghz,zavg)*Din
-def Sflux(fghz,Yin,Din,Teff):
-    return yflux(fghz,Yin,Teff)+dflux(fghz,Din)+Yin * gfuncrel(fghz*1e9,Teff)
+def Sflux(fghz,Yin,Din,dT):
+    return yflux(fghz,Yin)+dflux(fghz,Din)+dT
 
 #from scipy.optimize import curve_fit
 def gfunc(freq,Tcmb=2.7255e6):
@@ -156,9 +156,9 @@ bnu = bdust(freqs,zavg)
 
 def lnlike(param,nu,S,yerr): 
     #sys.exit()
-    Y,D,Teff=param
+    Y,D,dT=param
     nu=np.asarray(nu)
-    model=yflux(nu,Y,Teff)+dflux(nu,D)+Y * gfuncrel(nu*1e9,Teff)
+    model=yflux(nu,Y)+dflux(nu,D)+dT#+Y * gfuncrel(nu*1e9,Teff)
     yerr=np.asarray(yerr)
     inv_sigma2 = 1.0/(yerr**2)
     #print(param,-0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2))))
@@ -166,8 +166,8 @@ def lnlike(param,nu,S,yerr):
 
 def lnprior(param):
     #sys.exit()
-    Y,D,Teff=param
-    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16 and 0.0 < Teff <1e10:# and -1e-16 < dT < 0:
+    Y,D,dT=param
+    if  1e-17 < Y < 1e-14 and  1e-19< D < 1.25e-17 and -1e-16 < dT <1e-16:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -179,7 +179,7 @@ def lnprob(param, nu, S, yerr):
 
 
 ndim, nwalkers = 3, 20
-guess=np.array([5e-16,8e-18, 1e8])
+guess=np.array([5e-16,8e-18, 1e-20])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
@@ -211,7 +211,7 @@ print(samples.shape)
 Y_samples=rawsamples[:,:,0]
 
 D_samples=rawsamples[:,:,1]
-Teff_samples=rawsamples[:,:,2]
+kSZ_samples=rawsamples[:,:,2]
 #dT_samples=rawsamples[:,:,2]
 #print(Y_samples)
 plt.hist(Y_samples.reshape(-1))
@@ -224,9 +224,9 @@ plt.title('D')
 plt.savefig('D mcmc values.png')
 plt.close()
 
-plt.hist(Teff_samples.reshape(-1))
-plt.title('Teff')
-plt.savefig('Teff mcmc values.png')
+plt.hist(kSZ_samples.reshape(-1))
+plt.title('kSZ')
+plt.savefig('kSZ mcmc values.png')
 # plt.hist(dT_samples)
 # plt.title('dT')
 # plt.savefig('dT mcmc values.png')
@@ -239,6 +239,7 @@ ymax=np.max(Y_samples)
 plt.ylim(ymin,ymax)
 plt.title('Y')
 plt.savefig('Y mcmc chain.png')
+plt.close()
 
 for i in range(nwalkers):
     plt.plot(D_samples[i,:])
@@ -248,14 +249,15 @@ ymax=np.max(D_samples)
 plt.ylim(ymin,ymax)
 plt.title('D')
 plt.savefig('D mcmc chain.png')
+plt.close()
 
 for i in range(nwalkers):
-    plt.plot(Teff_samples[i,:])
-ymin=np.min(Teff_samples)
-ymax=np.max(Teff_samples)
+    plt.plot(kSZ_samples[i,:])
+ymin=np.min(kSZ_samples)
+ymax=np.max(kSZ_samples)
 plt.ylim(ymin,ymax)
-plt.title('Teff')
-plt.savefig('Teff mcmc chain.png')
+plt.title('kSZeff')
+plt.savefig('kSZ mcmc chain.png')
 #Uncomment this area later
 
 # plt.plot(dT_samples)
@@ -273,13 +275,11 @@ plt.savefig('Teff mcmc chain.png')
 # plt.savefig('Teff mcmc values.png')
 
 #samples[:, 1] = np.exp(samples[:, 1])
-Y_mcmc, D_mcmc, Teff_mcmc= map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
+Y_mcmc, D_mcmc, kSZ_mcmc= map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
                              zip(*np.percentile(samples, [16, 50, 84],
                                                 axis=0)))
-print(Y_mcmc, D_mcmc,Teff_mcmc)
-print(Y_mcmc[0])
-print(D_mcmc[0])
-print(Teff_mcmc[0])
+print(Y_mcmc, D_mcmc,kSZ_mcmc)
+
 
 
 
@@ -318,28 +318,22 @@ print(Teff_mcmc[0])
 # print(yerrs)
 
 import corner
-fig = corner.corner(samples, labels=["$Y$", "$D$", "$Teff$"])#,
+fig = corner.corner(samples, labels=["$Y$", "$D$", "$kSZ$"])#,
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])
-fig.savefig("CornerTeffplot.png")
+fig.savefig("trianglekSZ50000.png")
 #fig1.savefig("simulatedtriangle50000.png")
 x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)
 apmeans=np.array(apmeans)
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
-pl.add(freqs,np.abs(yflux(freqs,Y_mcmc[0],Teff_mcmc[0])),label='Y')
-pl.add(freqs,dflux(freqs,D_mcmc[0]),label="D")
-#pl.add(freqs,np.abs(gfuncrel(freqs,Teff_mcmc[0])),label="Teff")
-pl.add(freqs,np.abs(Sflux(freqs,Y_mcmc[0],D_mcmc[0],Teff_mcmc[0])),label='Fit')
-pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
-pl.legend()
-pl.done(io.dout_dir+"apfluxes_Tefffitlog.png")
 
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',)
-pl.add(freqs,yflux(freqs,Y_mcmc[0],Teff_mcmc[0]),label='Y')
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
+pl.add(freqs,np.abs(yflux(freqs,Y_mcmc[0])),label='Y')
 pl.add(freqs,dflux(freqs,D_mcmc[0]),label="D")
-pl.add(freqs,Sflux(freqs,Y_mcmc[0],D_mcmc[0],Teff_mcmc[0]),label='Fit')
+#pl.add(freqs,gfuncrel(freqs,T_mcmc[0]),label="Teff")
+pl.add(freqs,np.abs(Sflux(freqs,Y_mcmc[0],D_mcmc[0],kSZ_mcmc[0])),label='Fit')
 pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
 pl.legend()
-pl.done(io.dout_dir+"apfluxes_Tefffitlinear.png")
+pl.done(io.dout_dir+"apfluxes_kSZfitlog.png")
+
