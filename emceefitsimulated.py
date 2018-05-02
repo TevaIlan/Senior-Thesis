@@ -167,7 +167,7 @@ def lnlike(param,nu,S,yerr):
 def lnprior(param):
     #sys.exit()
     Y,D,Teff=param
-    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16 and 0< Teff <1e-14:# and -1e-16 < dT < 0:
+    if  1e-17 < Y < 1e-16 and  1e-19< D < 1.25e-17 and -1.2e9 < Teff <-4e8:# and -1e-16 < dT < 0:
         return 0.0
     return -np.inf
 
@@ -179,7 +179,7 @@ def lnprob(param, nu, S, yerr):
 
 
 ndim, nwalkers = 3, 20
-guess=np.array([5e-16,8e-18, 1e-30])
+guess=np.array([3.1150537441385675e-17,8.429739170700618e-18, -833828949.684])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
@@ -241,6 +241,15 @@ plt.title('Y')
 plt.savefig('Y mcmc chain.png')
 
 for i in range(nwalkers):
+    plt.plot(D_samples[i,:])
+    #print(Y_samples[i,:])
+ymin=np.min(D_samples)
+ymax=np.max(D_samples)
+plt.ylim(ymin,ymax)
+plt.title('D')
+plt.savefig('D mcmc chain.png')
+
+for i in range(nwalkers):
     plt.plot(Teff_samples[i,:])
 ymin=np.min(Teff_samples)
 ymax=np.max(Teff_samples)
@@ -279,8 +288,8 @@ print(np.mean(Teff_samples))
 # D = 9e-18
 # Y = -7.96871772e-17
 # D = 5.74833793e-18
-Y = 5e-16
-D = 8e-18
+# Y = 5e-16
+# D = 8e-18
 
 
 # dT = 0.
