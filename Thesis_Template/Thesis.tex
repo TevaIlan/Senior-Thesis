@@ -134,7 +134,7 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 %\label{$g(\nu)$}
 \end{figure}
 
-\par However, the linear fit algorithm was not effective at fitting for bulk kSZ or rSZ (in addition to Compton-y and dust). In order to effectively fit for these parameters we needed to include priors which constrained the possible values of the parameters. Without such priors, the fit algorithm resulted in physically nonsensical values (e.g. $T_{eff}<0$ and bulk kSZ significantly deviating from 0). Thus, we used mcmc to fit with priors. For the mcmc fit with parameters Compton-y, dust, and effective temperature, we found that $Y=6.3e-17^{+2.1e-18}_{-2.3e-18}$, $D=5.7e-18^{+3.3e-19}_{-3.3e-19}$, and $T_{eff}<1.4e8$. For the mcmc fit with parameters Compton-y, dust, and bulk kSZ, we found that $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.6e-18$. The results of these fits are shown in the plots below. 
+\par However, the linear fit algorithm was not effective at fitting for bulk kSZ or rSZ (in addition to Compton-y and dust). In order to effectively fit for these parameters we needed to include priors which constrained the possible values of the parameters. Without such priors, the fit algorithm resulted in physically nonsensical values (e.g. $T_{eff}<0$ and bulk kSZ significantly deviating from 0). Thus, we used mcmc to fit with priors. For the mcmc fit with parameters Compton-y, dust, and effective temperature, we found that $Y=6.3e-17^{+2.1e-18}_{-2.3e-18}$, $D=5.7e-18^{+3.3e-19}_{-3.3e-19}$, and $T_{eff}<1.4e8$. For the mcmc fit with parameters Compton-y, dust, and bulk kSZ, we found that $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.6e-18$. The results of these fits are shown in the plots below. The corner plots were generated using code from Foreman-Mackey, 2016. 
 
 \begin{figure}[h]
 \centering
@@ -166,9 +166,11 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 \chapter{Future Research}
 
 \chapter{References}
-J. P. Greco, J. C. Hill, D. N. Spergel, and N. Battaglia,
-Astrophys. J. 808, 151 (2015). \newline
 A. D. Hincks, R. Genova-Santos, G. Luzzia and
 E. S. Battistellia. Submitted to JCAP March 8th, 2018. \newline
-P. Bull, T. Clifton, and P. G. Ferreira Phys. Rev. D 85, 024002 (2012).
+Foreman-Mackey, corner.py: Scatterplot matrices in Python, Journal of Open Source Software, 1(2), 24, (2016).\newline
+J. P. Greco, J. C. Hill, D. N. Spergel, and N. Battaglia,
+Astrophys. J. 808, 151 (2015). \newline
+P. Bull, T. Clifton, and P. G. Ferreira Phys. Rev. D 85, 024002 (2012). \newline
+
 \end{document}
