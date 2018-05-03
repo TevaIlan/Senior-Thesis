@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAY 2018 01:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAY 2018 10:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -499,7 +499,26 @@ Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 \c@subfigure=\count105
 \c@subtable=\count106
 )
-(./Thesis.aux)
+(./Thesis.aux
+
+LaTeX Warning: Label `fig:fig3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:fig3' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:fig3' multiply defined.
+
+
+LaTeX Warning: Label `fig:fig3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:fig3' multiply defined.
+
+)
 \openout1 = `Thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -634,14 +653,14 @@ Chapter 1.
 
 ]
 Chapter 2.
-<../redmapper_z_hist.png, id=24, 462.528pt x 346.896pt>
+<../redmapper_z_hist.png, id=25, 462.528pt x 346.896pt>
 File: ../redmapper_z_hist.png Graphic file (type png)
 
 <use ../redmapper_z_hist.png>
 Package pdftex.def Info: ../redmapper_z_hist.png used on input line 36.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
-<../redmapper_richness_hist.png, id=26, 462.528pt x 346.896pt>
+<../redmapper_richness_hist.png, id=27, 462.528pt x 346.896pt>
 File: ../redmapper_richness_hist.png Graphic file (type png)
 
 <use ../redmapper_richness_hist.png>
@@ -655,7 +674,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  <../redmapper_z_hist.png>] [3 <../redmapper_richness_hist.png>]
 Chapter 3.
-<../gnu.png, id=39, 462.528pt x 346.896pt>
+<../gnu.png, id=40, 462.528pt x 346.896pt>
 File: ../gnu.png Graphic file (type png)
  <use ../gnu.png>
 Package pdftex.def Info: ../gnu.png used on input line 70.
@@ -663,20 +682,20 @@ Package pdftex.def Info: ../gnu.png used on input line 70.
  [4
 
 ]
-<../bdust.png, id=48, 462.528pt x 346.896pt>
+<../bdust.png, id=49, 462.528pt x 346.896pt>
 File: ../bdust.png Graphic file (type png)
  <use ../bdust.png>
 Package pdftex.def Info: ../bdust.png used on input line 77.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
-<../f90_redmapper_wstack.png, id=49, 399.6531pt x 322.3242pt>
+<../f90_redmapper_wstack.png, id=50, 399.6531pt x 322.3242pt>
 File: ../f90_redmapper_wstack.png Graphic file (type png)
 
 <use ../f90_redmapper_wstack.png>
 Package pdftex.def Info: ../f90_redmapper_wstack.png used on input line 89.
 (pdftex.def)             Requested size: 200.0pt x 161.30432pt.
 
-<../f150_redmapper_wstack.png, id=50, 399.6531pt x 322.3242pt>
+<../f150_redmapper_wstack.png, id=51, 399.6531pt x 322.3242pt>
 File: ../f150_redmapper_wstack.png Graphic file (type png)
 
 <use ../f150_redmapper_wstack.png>
@@ -687,14 +706,14 @@ Overfull \hbox (156.63536pt too wide) in paragraph at lines 94--95
  [][] 
  []
 
-<../f217_redmapper_wstack.png, id=51, 403.2666pt x 321.6015pt>
+<../f217_redmapper_wstack.png, id=52, 403.2666pt x 321.6015pt>
 File: ../f217_redmapper_wstack.png Graphic file (type png)
 
 <use ../f217_redmapper_wstack.png>
 Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 98.
 (pdftex.def)             Requested size: 200.0pt x 159.49992pt.
 
-<../f353_redmapper_wstack.png, id=52, 391.7034pt x 321.6015pt>
+<../f353_redmapper_wstack.png, id=53, 391.7034pt x 321.6015pt>
 File: ../f353_redmapper_wstack.png Graphic file (type png)
 
 <use ../f353_redmapper_wstack.png>
@@ -705,14 +724,14 @@ Overfull \hbox (156.63536pt too wide) in paragraph at lines 102--103
  [][] 
  []
 
-<../f545_redmapper_wstack.png, id=53, 399.6531pt x 321.6015pt>
+<../f545_redmapper_wstack.png, id=54, 399.6531pt x 321.6015pt>
 File: ../f545_redmapper_wstack.png Graphic file (type png)
 
 <use ../f545_redmapper_wstack.png>
 Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 106.
 (pdftex.def)             Requested size: 200.0pt x 160.94266pt.
 
-<../f857_redmapper_wstack.png, id=54, 414.8298pt x 321.6015pt>
+<../f857_redmapper_wstack.png, id=55, 414.8298pt x 321.6015pt>
 File: ../f857_redmapper_wstack.png Graphic file (type png)
 
 <use ../f857_redmapper_wstack.png>
@@ -795,13 +814,13 @@ Chapter 7.
 
 ] (./Thesis.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  4371 strings out of 492995
  63620 string characters out of 6132704
- 135182 words of memory out of 5000000
+ 136288 words of memory out of 5000000
  7846 multiletter control sequences out of 15000+600000
  13152 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -823,7 +842,7 @@ e/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis.pdf (16 pages, 754009 bytes).
+Output written on Thesis.pdf (16 pages, 761600 bytes).
 PDF statistics:
  152 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream
