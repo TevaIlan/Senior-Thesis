@@ -273,8 +273,8 @@ plt.savefig('Teff mcmc chain.png')
 # plt.savefig('Teff mcmc values.png')
 
 #samples[:, 1] = np.exp(samples[:, 1])
-Y_mcmc, D_mcmc, Teff_mcmc= map(lambda v: (v[1], v[2]-v[1], v[1]-v[0]),
-                             zip(*np.percentile(samples, [16, 50, 84],
+Y_mcmc, D_mcmc, Teff_mcmc= map(lambda v: (v[1], v[4]-v[3],v[3]-v[2],v[2]-v[1], v[1]-v[0]),
+                             zip(*np.percentile(samples, [5,32,50,68,95],
                                                 axis=0)))
 print(Y_mcmc, D_mcmc,Teff_mcmc)
 print(Y_mcmc[0])

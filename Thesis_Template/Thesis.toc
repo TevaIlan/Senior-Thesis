@@ -9,6 +9,6 @@
 \contentsline {section}{\numberline {3.2}Aperture Photometry}{4}
 \contentsline {section}{\numberline {3.3}Stacking}{5}
 \contentsline {chapter}{\numberline {4}Results}{7}
-\contentsline {chapter}{\numberline {5}Discussion and Conclusion}{9}
-\contentsline {chapter}{\numberline {6}Future Research}{10}
-\contentsline {chapter}{\numberline {7}References}{11}
+\contentsline {chapter}{\numberline {5}Discussion and Conclusion}{10}
+\contentsline {chapter}{\numberline {6}Future Research}{11}
+\contentsline {chapter}{\numberline {7}References}{12}
