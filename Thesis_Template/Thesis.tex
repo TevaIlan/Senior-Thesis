@@ -53,7 +53,7 @@ Y^{cyl}_{c}=d^{-2}_A(z) \frac{\sigma_T}{m_e c^2}\int_0^{R_c} 2 \pi R dR \int_{-\
 \end{equation}
 Where $Y^{cyl}_{c}$ is the observed Compton-y parameter, $d_A(z)$ is the angular diameter distance to the cluster,$\sigma_T$ is the Thomson scattering cross-section, $m_e c^2$ is the rest mass of the electron, R is the  projected radius which we integrate up to $R_c$,  and $P_e(r,M,z)$ is the electron pressure profile (Greco et al.).
 \section{Aperture Photometry}
-To extract the Compton-y parameter from the CMB maps and differentiate it from effects of the dust and kSZ, we perform aperture photometry on the CMB maps at the locations of clusters indicated by the cluster catalogs. To perform aperture photometry we define a circular aperture of some radius (which we determined empirically to correspond to the typical radius of the tSZ effect at each frequency) surrounded by an annulus. We then subtract the mean pixel value in the annulus from the circular aperture and define the observed signal, $S_i$, to be the sum of the pixel values inside the circular aperture after this subtraction. The mean value of the annulus is subtracted to correct for large-scale foreground contamination, assuming it is roughly constant over the extracted aperture (Greco et al.). This signal, $S_i$, is then modeled just as described in Greco et al.,
+To extract the Compton-y parameter from the CMB maps and differentiate it from effects of the dust, and bulk kSZ, we perform aperture photometry on the CMB maps at the locations of clusters indicated by the cluster catalogs. To perform aperture photometry we define a circular aperture of some radius (which we determined empirically to correspond to the typical radius of the tSZ effect at each frequency) surrounded by an annulus. We then subtract the mean pixel value in the annulus from the circular aperture and define the observed signal, $S_i$, to be the sum of the pixel values inside the circular aperture after this subtraction. The mean value of the annulus is subtracted to correct for large-scale foreground contamination, assuming it is roughly constant over the extracted aperture (Greco et al.). This signal, $S_i$, is then modeled just as described in Greco et al.,
 \begin{equation}
 \begin{aligned}
 S_i=a_i Y^{cyl}_{c}+b_i D_c +\delta T_{CMB} \\
@@ -63,8 +63,18 @@ b_i=\left(\frac{\nu_i(1+z)}{\nu_0}\right)^\beta B (v_i(1+z),T_{dust})\left[\frac
 \end{equation}
 
 
-where $g(\nu_i)=h\nu_i/k_B T_{CMB} coth(h\nu_i/2k_B T_{CMB})$, $T_{CMB}=2.7255 K$, $D_c$ is the amplitude of the dust emission integrated along the full LOS within the aperture radius, $v_0=353$ GHz is the reference frequency, $\beta=1.78$ is the dust spectral emissivity index, $T_{dust}= 20 K$ is the dust temperature, $B(\nu_i,T)$ is the Planck function, and $\delta T_{CMB}$ provides a constraint on bulk kSZ.\par
+where $g(\nu_i)=h\nu_i/k_B T_{CMB} coth(h\nu_i/2k_B T_{CMB})$, $T_{CMB}=2.7255 K$, $D_c$ is the amplitude of the dust emission integrated along the full LOS within the aperture radius, $v_0=353$ GHz is the reference frequency, $\beta=1.78$ is the dust spectral emissivity index, $T_{dust}= 20 K$ is the dust temperature, $B(\nu_i,T)$ is the Planck function, and $\delta T_{CMB}$ provides a constraint on bulk kSZ.\par 
 We do a weighted sum of the aperture photometry values for all the clusters at each frequency in which the weight of each value is inversely proportional to the amount of noise in that area of the map. Then we fit these weighted sums to the model above using emcee.
+\par We use a similar methodology to fit for tSZ, dust, and rSZ (rather than bulk kSZ). When fitting for these parameters, we use a slightly different model.
+\begin{equation}
+\begin{aligned}
+S_i=a_i Y^{cyl}_{c}+b_i D_c +Y^{cyl}_{c}g_{rel}(\nu_i,T_{eff}) \\
+a_i=g_{rel}(\nu_i,T_{eff}) T_{CMB}\\
+b_i=\left(\frac{\nu_i(1+z)}{\nu_0}\right)^\beta B (v_i(1+z),T_{dust})\left[\frac{\partial B(\nu_i,T)}{\partial T} \right]^{-1}_{T_{CMB}},
+\end{aligned}
+\end{equation}
+where $g_{rel}(\nu,T_{eff})$ is $g(\nu)$ modified with relativistic corrections thus introducing a dependency on the effective temperature ($T_{eff}$). In the case $T_{eff}=0$, $g_{rel}(\nu,T_{eff}=g(\nu)$. A plot of $g_{rel}(\nu,T_{eff}$ for different values of $T_{eff}$ and a plot of the dust coefficient are shown below.
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../gnu.png}
