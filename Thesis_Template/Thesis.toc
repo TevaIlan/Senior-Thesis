@@ -11,4 +11,5 @@
 \contentsline {chapter}{\numberline {4}Results}{8}
 \contentsline {chapter}{\numberline {5}Discussion and Conclusion}{11}
 \contentsline {chapter}{\numberline {6}Future Research}{12}
-\contentsline {chapter}{\numberline {7}References}{13}
+\contentsline {chapter}{\numberline {7}Acknowledgements}{13}
+\contentsline {chapter}{\numberline {8}References}{14}
