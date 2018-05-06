@@ -215,7 +215,7 @@ if rank==0:
     # io.hist(st.vectors['thetas'],save_file = io.dout_dir+"thetahist.png")
 
     io.plot_img(stack,io.dout_dir+"stack.png")
-    io.plot_img(wstack,io.dout_dir+"wstack.png")
+    io.plot_img(wstack,io.dout_dir+"wstack.pdf")
 
     if (zmin is None) and (zmax is None):
         #np.savetxt("f"+freq+"_"+args.cat+"_apflux.txt",st.vectors['apflux'])
