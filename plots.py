@@ -151,13 +151,13 @@ def gfuncrel(freq,Te,Tcmb=2.7255e6):
   gfuncrel=Y0+Y1*tTe+Y2*tTe**2.0+Y3*tTe**3.0 
   return gfuncrel
 
-plt.plot(freqs,gfuncrel(freqs*1e9,Te=0,),label='Teff=0')
-plt.plot(freqs,gfuncrel(freqs*1e8,Te=1e8,),label='Teff=1e8')
-plt.plot(freqs,gfuncrel(freqs*1e8,Te=1e10,),label='Teff=1e10')
-#plt.plot(freqs,gfuncrel(freqs*1e9,Te=1e12,),label='Teff=1e12')
+plt.plot(freqs,gfuncrel(freqs*1e9,Te=0,),label='Teff=0 keV')
+plt.plot(freqs,gfuncrel(freqs*1e9,Te=58022625.03083,),label='Teff=5 keV') 
+plt.plot(freqs,gfuncrel(freqs*1e9,Te=116045250.0617,),label='Teff=10 keV') 
+plt.plot(freqs,gfuncrel(freqs*1e9,Te=174067875.0925,),label='Teff=15 keV')
 plt.ylabel(r'$g(\nu)$')
 plt.xlabel(r'$\nu$')
 plt.legend()
-plt.savefig('gnu.png')
+plt.savefig('gnu.pdf')
 
   
