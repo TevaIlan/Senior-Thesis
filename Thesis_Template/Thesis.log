@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAY 2018 18:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  6 MAY 2018 12:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -521,18 +521,18 @@ LaTeX Warning: Label `sub@fig:fig3' multiply defined.
 )
 \openout1 = `Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -653,169 +653,174 @@ Chapter 1.
 
 ] [2]
 Chapter 2.
-<../redmapper_z_hist.png, id=28, 462.528pt x 346.896pt>
-File: ../redmapper_z_hist.png Graphic file (type png)
+<../redmapper_z_hist.pdf, id=28, 462.52798pt x 346.89601pt>
+File: ../redmapper_z_hist.pdf Graphic file (type pdf)
 
-<use ../redmapper_z_hist.png>
-Package pdftex.def Info: ../redmapper_z_hist.png used on input line 38.
-(pdftex.def)             Requested size: 216.81pt x 162.60709pt.
+<use ../redmapper_z_hist.pdf>
+Package pdftex.def Info: ../redmapper_z_hist.pdf used on input line 45.
+(pdftex.def)             Requested size: 216.81pt x 162.6071pt.
 
-<../redmapper_richness_hist.png, id=30, 462.528pt x 346.896pt>
-File: ../redmapper_richness_hist.png Graphic file (type png)
 
-<use ../redmapper_richness_hist.png>
-Package pdftex.def Info: ../redmapper_richness_hist.png used on input line 45.
-(pdftex.def)             Requested size: 216.81pt x 162.60709pt.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../redmapper_richness_hist.pdf, id=29, 462.52798pt x 346.89601pt>
+File: ../redmapper_richness_hist.pdf Graphic file (type pdf)
+
+<use ../redmapper_richness_hist.pdf>
+Package pdftex.def Info: ../redmapper_richness_hist.pdf used on input line 52.
+(pdftex.def)             Requested size: 216.81pt x 162.6071pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3
 
- <../redmapper_z_hist.png>] [4 <../redmapper_richness_hist.png>]
+] [4 <../redmapper_z_hist.pdf> <../redmapper_richness_hist.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../redmapper_richness_hist.p
+df): PDF inclusion: multiple pdfs with page group included in a single page
+>]
 Chapter 3.
 [5
 
-] <../gnu.png, id=51, 462.528pt x 346.896pt>
+] <../gnu.png, id=108, 462.528pt x 346.896pt>
 File: ../gnu.png Graphic file (type png)
  <use ../gnu.png>
-Package pdftex.def Info: ../gnu.png used on input line 82.
+Package pdftex.def Info: ../gnu.png used on input line 89.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
-<../bdust.png, id=52, 462.528pt x 346.896pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../bdust.png, id=110, 462.528pt x 346.896pt>
 File: ../bdust.png Graphic file (type png)
  <use ../bdust.png>
-Package pdftex.def Info: ../bdust.png used on input line 89.
+Package pdftex.def Info: ../bdust.png used on input line 96.
 (pdftex.def)             Requested size: 216.81pt x 162.60709pt.
 
-<../f90_redmapper_wstack.png, id=53, 399.6531pt x 322.3242pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../f90_redmapper_wstack.png, id=111, 399.6531pt x 322.3242pt>
 File: ../f90_redmapper_wstack.png Graphic file (type png)
 
 <use ../f90_redmapper_wstack.png>
-Package pdftex.def Info: ../f90_redmapper_wstack.png used on input line 101.
+Package pdftex.def Info: ../f90_redmapper_wstack.png used on input line 108.
 (pdftex.def)             Requested size: 200.0pt x 161.30432pt.
 
-<../f150_redmapper_wstack.png, id=54, 399.6531pt x 322.3242pt>
+<../f150_redmapper_wstack.png, id=112, 399.6531pt x 322.3242pt>
 File: ../f150_redmapper_wstack.png Graphic file (type png)
 
 <use ../f150_redmapper_wstack.png>
-Package pdftex.def Info: ../f150_redmapper_wstack.png used on input line 106.
+Package pdftex.def Info: ../f150_redmapper_wstack.png used on input line 113.
 (pdftex.def)             Requested size: 200.0pt x 161.30432pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 106--107
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 113--114
  [][] 
  []
 
-<../f217_redmapper_wstack.png, id=55, 403.2666pt x 321.6015pt>
+<../f217_redmapper_wstack.png, id=113, 403.2666pt x 321.6015pt>
 File: ../f217_redmapper_wstack.png Graphic file (type png)
 
 <use ../f217_redmapper_wstack.png>
-Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 111.
+Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 118.
 (pdftex.def)             Requested size: 200.0pt x 159.49992pt.
 
-<../f353_redmapper_wstack.png, id=56, 391.7034pt x 321.6015pt>
+<../f353_redmapper_wstack.png, id=114, 391.7034pt x 321.6015pt>
 File: ../f353_redmapper_wstack.png Graphic file (type png)
 
 <use ../f353_redmapper_wstack.png>
-Package pdftex.def Info: ../f353_redmapper_wstack.png used on input line 115.
+Package pdftex.def Info: ../f353_redmapper_wstack.png used on input line 122.
 (pdftex.def)             Requested size: 200.0pt x 164.21088pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 115--116
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 122--123
  [][] 
  []
 
-<../f545_redmapper_wstack.png, id=57, 399.6531pt x 321.6015pt>
+<../f545_redmapper_wstack.png, id=115, 399.6531pt x 321.6015pt>
 File: ../f545_redmapper_wstack.png Graphic file (type png)
 
 <use ../f545_redmapper_wstack.png>
-Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 120.
+Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 127.
 (pdftex.def)             Requested size: 200.0pt x 160.94266pt.
 
-<../f857_redmapper_wstack.png, id=58, 414.8298pt x 321.6015pt>
+<../f857_redmapper_wstack.png, id=116, 414.8298pt x 321.6015pt>
 File: ../f857_redmapper_wstack.png Graphic file (type png)
 
 <use ../f857_redmapper_wstack.png>
-Package pdftex.def Info: ../f857_redmapper_wstack.png used on input line 124.
+Package pdftex.def Info: ../f857_redmapper_wstack.png used on input line 131.
 (pdftex.def)             Requested size: 200.0pt x 155.04906pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 124--125
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 131--132
  [][] 
  []
 
-[6 <../gnu.png> <../bdust.png>] [7] [8 <../f90_redmapper_wstack.png> <../f150_r
+[6] [7 <../gnu.png> <../bdust.png>] [8 <../f90_redmapper_wstack.png> <../f150_r
 edmapper_wstack.png> <../f217_redmapper_wstack.png> <../f353_redmapper_wstack.p
 ng> <../f545_redmapper_wstack.png> <../f857_redmapper_wstack.png>]
 Chapter 4.
 
-<../redmapper_apfluxes_fitlog_earlier_version.png, id=77, 671.50874pt x 479.792
-5pt>
+<../redmapper_apfluxes_fitlog_earlier_version.png, id=135, 671.50874pt x 479.79
+25pt>
 File: ../redmapper_apfluxes_fitlog_earlier_version.png Graphic file (type png)
  <use ../redmapper_apfluxes_fitlog_earlier_version.png>
 Package pdftex.def Info: ../redmapper_apfluxes_fitlog_earlier_version.png used 
-on input line 134.
+on input line 141.
 (pdftex.def)             Requested size: 216.81pt x 154.90576pt.
+ [9
 
-<../CornerTeffplot.png, id=78, 549.252pt x 549.252pt>
+ <../redmapper_apfluxes_fitlog_earlier_version.png>]
+<../CornerTeffplot.png, id=141, 549.252pt x 549.252pt>
 File: ../CornerTeffplot.png Graphic file (type png)
 
 <use ../CornerTeffplot.png>
-Package pdftex.def Info: ../CornerTeffplot.png used on input line 143.
+Package pdftex.def Info: ../CornerTeffplot.png used on input line 150.
 (pdftex.def)             Requested size: 216.81pt x 216.8055pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../redmapper_apfluxes_Tefffitlog.png, id=79, 483.4863pt x 345.4506pt>
+<../redmapper_apfluxes_Tefffitlog.png, id=142, 483.4863pt x 345.4506pt>
 File: ../redmapper_apfluxes_Tefffitlog.png Graphic file (type png)
 
 <use ../redmapper_apfluxes_Tefffitlog.png>
 Package pdftex.def Info: ../redmapper_apfluxes_Tefffitlog.png used on input lin
-e 149.
+e 156.
 (pdftex.def)             Requested size: 216.81pt x 154.9084pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../BulkkSZplot.png, id=80, 549.252pt x 549.252pt>
+<../BulkkSZplot.png, id=143, 549.252pt x 549.252pt>
 File: ../BulkkSZplot.png Graphic file (type png)
  <use ../BulkkSZplot.png>
-Package pdftex.def Info: ../BulkkSZplot.png used on input line 155.
+Package pdftex.def Info: ../BulkkSZplot.png used on input line 162.
 (pdftex.def)             Requested size: 216.81pt x 216.8055pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../redmapper_apfluxes_kSZfitlog.png, id=81, 483.4863pt x 345.4506pt>
+<../redmapper_apfluxes_kSZfitlog.png, id=144, 483.4863pt x 345.4506pt>
 File: ../redmapper_apfluxes_kSZfitlog.png Graphic file (type png)
 
 <use ../redmapper_apfluxes_kSZfitlog.png>
 Package pdftex.def Info: ../redmapper_apfluxes_kSZfitlog.png used on input line
- 161.
+ 168.
 (pdftex.def)             Requested size: 216.81pt x 154.9084pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9
-
- <../redmapper_apfluxes_fitlog_earlier_version.png>] [10 <../CornerTeffplot.png
-> <../redmapper_apfluxes_Tefffitlog.png>] [11 <../BulkkSZplot.png> <../redmappe
-r_apfluxes_kSZfitlog.png>]
+[10 <../CornerTeffplot.png>] [11 <../redmapper_apfluxes_Tefffitlog.png> <../Bul
+kkSZplot.png>] [12 <../redmapper_apfluxes_kSZfitlog.png>]
 Chapter 5.
-[12
-
-]
-Chapter 6.
 [13
 
 ]
-Chapter 7.
+Chapter 6.
 [14
 
 ]
-Chapter 8.
+Chapter 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--182
+Underfull \hbox (badness 10000) in paragraph at lines 184--189
 
  []
 
@@ -829,7 +834,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4371 strings out of 492995
  63620 string characters out of 6132704
- 137047 words of memory out of 5000000
+ 139064 words of memory out of 5000000
  7846 multiletter control sequences out of 15000+600000
  13152 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -851,10 +856,10 @@ e/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis.pdf (19 pages, 768268 bytes).
+Output written on Thesis.pdf (19 pages, 762902 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 221 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

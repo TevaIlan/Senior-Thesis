@@ -2,6 +2,8 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[margin=1in,inner=1.5in]{geometry}
 \RequirePackage{setspace}
+\doublespacing
+%\linespread{2}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -23,6 +25,11 @@
 %\par Secondly as both richness and an effect of the gas called the SZ effect are used as ways of finding clusters and as proxies for their mass it is important to understand how they are related. The SZ effect is the result of inverse Compton scattering of photons from the CMB off of high energy electrons in hot gas. When CMB photons go through hot cluster gas they gain energy from the high energy electrons. Then when we measure the CMB these photons produce a frequency-dependent change in the observed CMB temperature along the Line-of-Sight to the galaxy cluster. 
 %\par In order to determine the relationship between the richness of clusters and the amount of gas in them we used CMB maps from ACT and the redMaPPer galaxy group catalog. The 1.4 arcminute resolution of ACT gives its CMB maps a higher resolution than those made with the Planck satellite. The ACT CMB maps we used in our analysis were taken at 250 GHz. We used the redMaPPer catalog because it contains good measurements of cluster richness and many of the cluster were located within our CMB maps. RedMaPPer is a red-sequence cluster finder, which means that it finds galaxy cluster candidates by looking for over densities of galaxies that form a red sequence.
 \par The Sunyaev--Zel'dovich (SZ) effect results from inverse Compton scattering of CMB photons off of the hot gas in galaxy clusters. The dominant component of this effect results from interactions between Cosmic Microwave Background (CMB) photons and electrons in the gas that have high energies as a result of their temperature. This produces a frequency dependent shift in the observed CMB temperature along the Line-of-Sight (LOS) to the galaxy cluster and is known as the thermal SZ (tSZ) effect (Greco et al.). The shape of the distortion of the observed CMB due to the tSZ effect is constant to first order but there is a higher order dependency on the temperature of the gas due to relativistic corrections. This is called the relativistic SZ effect (rSZ) (Hincks et al, 2018). There is also a second order effect that results from interactions between the CMB photons and electrons in the gas that have high energies as a result of their bulk motion. This effect depends on the peculiar velocity of the cluster, has no frequency dependence, and is known as the kinetic SZ (kSZ) effect (Hincks et al., 2018). The relativistic corrections to the kSZ effect are far below current sensitivities (Erler, 2018). 
+%\par Defining the dimensionless frequency as $x\equiv h\nu_i/2k_B T_{CMB}$, we can write the SZ effect as an intensity shift relative to the CMB,
+%\begin{equation}
+%\frac{\Delta I_{SZ}}{I_0}=h(x)\left[f(x,T_{eff})y-\tau_{e}\left(\frac{v_{pec}}{c}\right)\right],
+%\end{equation}
+%where $I_0=2(k_B T_{CMB})^3/(hc)^2$, $h(x)=x^4 e^x/(e^x-1)^2$, y is the Compton y-parameter which is a measure of the electron pressure integrated along the LOS, $\tau_e$ is the optical depth of the plasma, and $v_pec$ is the LOS peculiar velocity in the rest frame of the CMB.
 \par Thus the tSZ effect can be used as a proxy for the mass of or the amount of gas in clusters, the kSZ effect can be used to measure the peculiar velocity of clusters, and the rSZ effect can be used to measure the gas temperature. Understanding the tSZ signal and thus understanding the amount of gas in clusters is important because it informs the astrophysics of galaxy cluster formation. The kSZ effect is the only method of directly measuring peculiar velocities at cosmological distances. Using kSZ to measure the peculiar velocities of individual clusters requires models of the intracluster medium (De Bernardis et al., 2017). However, such models are not required to constrain bulk kSZ. The kSZ effect is important as a measurement of bulk kSZ which can be used to constrain radial inhomogeneity in the peculiar velocities of galaxy clusters. An alternative explanation for the apparent accelerating expansion of the universe due to dark energy is that our galaxy is located in a giant under-dense void and the observed acceleration is due to the peculiar velocities of galaxy clusters rather than a change in the rate of cosmic expansion (Bull et al., 2012). One of the goals of this work was to put a constraint on bulk kSZ, which is important given the fact that our understanding of cosmology is based on homogeneity on large scales. A detection of bulk kSZ would derail this foundational assumption of cosmology.
 \par Trying to measure rSZ is important because if measurable, it would provide an additional means of measuring the gas temperature in clusters, which is traditionally done via X-ray spectroscopy (Hincks et al, 2018). Though rSZ is a higher order effect it can be on the order of a few percent at certain frequencies and ignoring it can lead to an underestimation of the Compton-y parameter. This in turn results in a biased Y--M relation, which is used to estimate cosmological parameters (Hincks et al, 2018). Additionally, apart from a recent claimed detection by Hincks et al., rSZ has never been detected. Thus, constraining or detecting rSZ is itself a topic of interest. In this work, we were able to constrain rSZ but failed to make a detection with the available data.
 \par This work is structured as follows: Section 2 provides a description of the data (maps and catalogs) that we used in our analysis. Section 3 our methodology for analyzing this data and fitting for the quantities of interest as well as some of the theory behind this methodology. In Section 4, we present the results of our data analysis. These results are then discussed in Section 5. Section 6 provides an overview of possible areas for future research. 
@@ -35,14 +42,14 @@ We used CMB maps at 5 frequencies: 90 GHz, 150 GHz, 217 GHz, 353 GHz, 545 GHz, a
 Our work involved two sets of galaxy cluster catalogues: the redMaPPer and an ACT confirmed cluster catalog. RedMaPPer is a red-sequence cluster finder, which means that it finds galaxy cluster candidates by looking for over densities of galaxies that form a red sequence. Our main analysis only uses the redMaPPer catalog. Some properties of the redMaPPer catalog are shown in the two plots below.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{../redmapper_z_hist.png}
+\includegraphics[width=0.5\textwidth]{../redmapper_z_hist.pdf}
 \caption{This plot shows a histogram of the distribution of redshifts of the clusters in the RedMaPPer catalog. Evidently, the clusters in the RedMaPPer catalog range from $z\approx0.05$ to $z\approx0.6$. Note that this plot only includes clusters from RedMaPPer that were used in our analysis and thus does not include clusters that fell outside the range of our maps or were too close to point sources. }
 %\label{RedMaPPer Redshift Distribution}
 \end{figure}
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{../redmapper_richness_hist.png}
+\includegraphics[width=0.5\textwidth]{../redmapper_richness_hist.pdf}
 \caption{This plot shows a histogram of the distribution of the richnesses of the clusters in the redMaPPer catalog. Evidently, the vast majority of clusters in the RedMaPPer catalog fall between richnesses of 25 and 100. Note that this plot only includes clusters from RedMaPPer that were used in our analysis and thus does not include clusters that fell outside the range of our maps or were too close to point sources. }
 %\label{RedMaPPer Richness Distribution}
 \end{figure}
@@ -165,10 +172,10 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 
 \chapter{Discussion and Conclusion}
 
-\chapter{Future Research}
+
 
 \chapter{Acknowledgements}
-This work would not have been possible without the invaluable assistance of Dr. Mathew Madhavacheril. We would also like to thank Prof. David Spergel for providing some helpful insights regarding the direction of this project.
+This work would not have been possible without the invaluable assistance of Dr. Mathew Madhavacheril. We would also like to thank Prof. David Spergel,  Dr. Colin Hill, and Dr. Nick Battaglia for providing some helpful insights regarding the direction of this project.   Dr. Colin Hill's code for rSZ was also extremely useful. 
 
 \chapter{References}
 A. D. Hincks, R. Genova-Santos, G. Luzzia and E. S. Battistellia. Submitted to JCAP March 8th, \par 2018. \newline
