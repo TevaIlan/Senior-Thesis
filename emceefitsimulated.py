@@ -318,7 +318,7 @@ print(Teff_mcmc[0])
 # print(yerrs)
 
 import corner
-fig = corner.corner(samples, labels=["$Y$", "$D$", "$Teff$"])#,
+fig = corner.corner(samples, labels=["$Y$", "$D$", "$Teff$"],levels=(1-np.exp(-0.5),))#,
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])

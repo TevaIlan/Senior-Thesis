@@ -31,15 +31,18 @@
 %\end{equation}
 %where $I_0=2(k_B T_{CMB})^3/(hc)^2$, $h(x)=x^4 e^x/(e^x-1)^2$, y is the Compton y-parameter which is a measure of the electron pressure integrated along the LOS, $\tau_e$ is the optical depth of the plasma, and $v_pec$ is the LOS peculiar velocity in the rest frame of the CMB.
 \par Thus the tSZ effect can be used as a proxy for the mass of or the amount of gas in clusters, the kSZ effect can be used to measure the peculiar velocity of clusters, and the rSZ effect can be used to measure the gas temperature. Understanding the tSZ signal and thus understanding the amount of gas in clusters is important because it informs the astrophysics of galaxy cluster formation. The kSZ effect is the only method of directly measuring peculiar velocities at cosmological distances. Using kSZ to measure the peculiar velocities of individual clusters requires models of the intracluster medium (De Bernardis et al., 2017). However, such models are not required to constrain bulk kSZ. The kSZ effect is important as a measurement of bulk kSZ which can be used to constrain radial inhomogeneity in the peculiar velocities of galaxy clusters. An alternative explanation for the apparent accelerating expansion of the universe due to dark energy is that our galaxy is located in a giant under-dense void and the observed acceleration is due to the peculiar velocities of galaxy clusters rather than a change in the rate of cosmic expansion (Bull et al., 2012). One of the goals of this work was to put a constraint on bulk kSZ, which is important given the fact that our understanding of cosmology is based on homogeneity on large scales. A detection of bulk kSZ would derail this foundational assumption of cosmology.
-\par Trying to measure rSZ is important because if measurable, it would provide an additional means of measuring the gas temperature in clusters, which is traditionally done via X-ray spectroscopy (Hincks et al, 2018). Though rSZ is a higher order effect it can be on the order of a few percent at certain frequencies and ignoring it can lead to an underestimation of the Compton-y parameter. This in turn results in a biased Y--M relation, which is used to estimate cosmological parameters (Hincks et al, 2018). Additionally, apart from a recent claimed detection by Hincks et al., rSZ has never been detected. Thus, constraining or detecting rSZ is itself a topic of interest. In this work, we were able to constrain rSZ but failed to make a detection with the available data.
+\par Trying to measure rSZ is important because if measurable, it would provide an additional means of measuring the gas temperature in clusters, which is traditionally done via X-ray spectroscopy (Hincks et al, 2018). Though rSZ is a higher order effect it can be on the order of a few percent at certain frequencies and ignoring it can lead to an underestimation of the Compton-y parameter. This in turn results in a biased Y--M relation, which is used to estimate cosmological parameters (Hincks et al, 2018). Additionally, apart from a recent claimed detection by Hincks et al., rSZ has never been detected. Thus, constraining or detecting rSZ is itself a topic of interest. In this work, we were able to constrain rSZ but failed to make a detection with the available data. 
+\par Past research has constrained bulk kSZ. For example, in 2014 the Planck collaboration used the Planck data and the Meta Catalogue of X-ray detected Clusters of galaxies to put an upper limit of  $254\, km/s$ (95\% confidence level) on bulk flow. These results were consistent with $\Lambda CDM$ cosmology and combined with supernova observations were able to rule out many inhomogeneous void models that were proposed as alternatives to dark energy (Planck, 2014). However, the catalog and maps we use have not previously been utilized to put a constraint on bulk kSZ. 
+\par As mentioned earlier, there has only been one claimed detection of rSZ. This detection by Hincks et al. was at the $5\sigma$ level and was accomplished using the Planck DR2 maps at 5 different frequencies (70, 100,
+143, 217 and 353 GHz) and 47 galaxy clusters they selected from the Planck SZ1 cluster catalogue. In analyzing this data they used an affine invariant Markov chain Monte Carlo (MCMC) sampler implemented via the emcee python package to obtain the best fit parameters (Hincks et al, 2018). Though our fitting methodology is similar to Hincks et al., the data we use is different and has not previously been applied to constrain or detect rSZ.
 \par This work is structured as follows: Section 2 provides a description of the data (maps and catalogs) that we used in our analysis. Section 3 our methodology for analyzing this data and fitting for the quantities of interest as well as some of the theory behind this methodology. In Section 4, we present the results of our data analysis. These results are then discussed in Section 5. Section 6 provides an overview of possible areas for future research. 
 
 
 \chapter{Data}
 \section{CMB Maps}
-We used CMB maps at 5 frequencies: 90 GHz, 150 GHz, 217 GHz, 353 GHz, 545 GHz, and 857 GHz. The 90 GHz and 150 GHz maps are from the Atacama Cosmology Telescope (ACT) while the high frequency maps are from the Planck satellite. All of the maps go from -44 degrees to 46 degrees in right ascension and -9 degrees to 5 degrees in declination. Using maps from multiple frequencies allows us to disentangle different components of the observed flux from each other, specifically the dust component, the tSZ effect component, the kSZ effect component, and the rSZ effect component.
+We used CMB maps at 5 frequencies: 90 GHz, 150 GHz, 217 GHz, 353 GHz, 545 GHz, and 857 GHz. The 90 GHz and 150 GHz maps are from the Atacama Cosmology Telescope (ACT) while the high frequency maps are from the Planck satellite. All of the maps go from -44 degrees to 46 degrees in right ascension and -9 degrees to 5 degrees in declination. Using maps from multiple frequencies allows us to disentangle different components of the observed flux from each other, specifically the dust component, the tSZ effect component, the kSZ effect component, and the rSZ effect component. It should also be noted that the ACT maps that we refer to as the  90 GHz and 150 GHz maps actually combine data from multiple frequencies. The "90 GHz" ACT map is a coadd of Planck 100 GHz and all ACTPol 90 GHz night-time data collected from 2013-2015. Similarly, the "150 GHz" ACT map is a coadd of Planck 143 GHz and all ACTPol 150 GHz night-time data collected during the same time period.
 \section{Galaxy Cluster Catalogs}
-Our work involved two sets of galaxy cluster catalogues: the redMaPPer and an ACT confirmed cluster catalog. RedMaPPer is a red-sequence cluster finder, which means that it finds galaxy cluster candidates by looking for over densities of galaxies that form a red sequence. Our main analysis only uses the redMaPPer catalog. Some properties of the redMaPPer catalog are shown in the two plots below.
+Our work involved two sets of galaxy cluster catalogues: the redMaPPer and an ACT confirmed cluster catalog. RedMaPPer is a red-sequence cluster finder, which means that it finds galaxy cluster candidates by looking for over densities of galaxies that form a red sequence. Our main analysis only uses the redMaPPer catalog. Of the 2198 galaxy clusters in the redMaPPer catalog, over 14,000 were located on the maps we used and sufficiently far from point sources to be used in our analysis. Some properties of the redMaPPer catalog are shown in the two plots below.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_z_hist.pdf}
@@ -138,12 +141,12 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{../redmapper_apfluxes_fitlog.pdf}
+\includegraphics[width=0.5\textwidth]{../redmapper_apfluxes_fitlog.pdf}
 \caption{This plot shows a linear fit of the data using only two fit parameters: Y (i.e. the Compton-y parameter) and D (the dust parameter). Note that the y-axis is on a log scale and thus shows the absolute value.}
 %\label{$g(\nu)$}
 \end{figure}
 
-\par However, the linear fit algorithm was not effective at fitting for bulk kSZ or rSZ (in addition to Compton-y and dust). In order to effectively fit for these parameters we needed to include priors which constrained the possible values of the parameters. Without such priors, the fit algorithm resulted in physically nonsensical values (e.g. $T_{eff}<0$ and bulk kSZ significantly deviating from 0). Thus, we used mcmc to fit with priors. For the mcmc fit with parameters Compton-y, dust, and effective temperature, we found that $Y=6.3e-17^{+2.1e-18}_{-2.3e-18}$, $D=5.7e-18^{+3.3e-19}_{-3.3e-19}$, and $T_{eff}<1.4e8$. For the mcmc fit with parameters Compton-y, dust, and bulk kSZ, we found that $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.6e-18$. The results of these fits are shown in the plots below. The corner plots were generated using code from Foreman-Mackey, 2016. 
+\par However, the linear fit algorithm was not effective at fitting for bulk kSZ or rSZ (in addition to Compton-y and dust). In order to effectively fit for these parameters we needed to include priors which constrained the possible values of the parameters. Without such priors, the fit algorithm resulted in physically nonsensical values (e.g. $T_{eff}<0$ and bulk kSZ significantly deviating from 0). Thus, we used mcmc to fit with priors. For the mcmc fit with parameters Compton-y, dust, and effective temperature, we found that $Y=6.3e-17^{+2.1e-18}_{-2.3e-18}$, $D=5.7e-18^{+3.3e-19}_{-3.3e-19}$, and $T_{eff}<1.4e8$. For the mcmc fit with parameters Compton-y, dust, and bulk kSZ, we found that $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.5e-18$. The results of these fits are shown in the plots and table below. The corner plots were generated using code from Foreman-Mackey, 2016. 
 
 \begin{figure}[h]
 \centering
@@ -160,22 +163,37 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../BulkkSZplot.png}
-\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the bulk kSZ. The priors used were $ 1e-17 < Y < 1e-14, 1e-19< D < 1e-16$ and $-1e-17 < kSZ <1e-17.$ The resulting best fit parameters were $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<3.0e-18$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.}
+\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the bulk kSZ. The priors used were $ 1e-17 < Y < 1e-14, 1e-19< D < 1e-16$ and $-1e-17 < kSZ <1e-17.$ The resulting best fit parameters were $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.5e-18$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_apfluxes_kSZfitlog.png}
-\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the bulk kSZ on a logarithmic y-scale. The priors used were $ 1e-17 < Y < 1e-14, 1e-19< D < 1e-16$ and $-1e-17 < kSZ <1e-17.$ The resulting best fit parameters were $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.6e-18$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.} %not sure the constraint value is correct
+\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the bulk kSZ on a logarithmic y-scale. The priors used were $ 1e-17 < Y < 1e-14, 1e-19< D < 1e-16$ and $-1e-17 < kSZ <1e-17.$ The resulting best fit parameters were $Y=7.9e-17^{+2.1e-18}_{-2.1e-18}$, $D=5.8e-18^{+3.3e-19}_{-3.4e-19}$, and $kSZ<-3.5e-18$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.} %not sure the constraint value is correct
 \end{figure}
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c||} 
+ \hline
+Compton-y & Dust & rSZ & kSZ \\ [0.5ex] 
+ \hline\hline
+ 6.3e-17 & 5.7e-18 & <1.4e8 & N/A \\ 
+ 7.9e-17 & 5.8e-18 & N/A & <-3.5e-18 \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{This table shows the best fit values and constraints of the two fits we performed using the emcee python package. The first row shows the best fit values and constraints for the rSZ fit and the second row shows the best fit values and constraints for the kSZ fit.}
+\label{table:1}
+\end{table}
 
 \chapter{Discussion and Conclusion}
+\par Comparing our results to previous work on this topic, 
+\par There are a number of improvements to our analysis that could be made in future work. For example, in our analysis we assumed that each map corresponded to a single frequency. However, this assumption is not entirely accurate. In reality, the CMB maps are not measured at a single, exact frequency, but rather consist of an integrated signal over some frequency bandpass. Thus, our analysis could be enhanced by taking this into account. In future research, we could also account for the beam convolution in the CMB maps.
 
 
 
 \chapter{Acknowledgements}
-This work would not have been possible without the invaluable assistance of Dr. Mathew Madhavacheril. We would also like to thank Prof. David Spergel,  Dr. Colin Hill, and Dr. Nick Battaglia for providing some helpful insights regarding the direction of this project.   Dr. Colin Hill's code for rSZ was also extremely useful. 
+This work would not have been possible without the invaluable assistance of Dr. Mathew Madhavacheril. We would also like to thank Prof. David Spergel,  Dr. Colin Hill, and Dr. Nick Battaglia for providing some helpful insights regarding the direction of this project.   Dr. Colin Hill's code for rSZ was also extremely useful. Finally, we would like to acknowledge Sigurd Naess for providing the ACT coadd maps.
 
 \chapter{References}
 A. D. Hincks, R. Genova-Santos, G. Luzzia and E. S. Battistellia. Submitted to JCAP March 8th, \par 2018. \newline
@@ -186,5 +204,6 @@ J. Erler, K. Basu, J. Chluba, and F. Bertoldi, MNRAS 000, 1?22 (2018).
 J. P. Greco, J. C. Hill, D. N. Spergel, and N. Battaglia,
 Astrophys. J. 808, 151 (2015). \newline
 P. Bull, T. Clifton, and P. G. Ferreira Phys. Rev. D 85, 024002 (2012). \newline
+Planck, P. A. R. Ade et al., Astron. Astrophys. 561, A97 (2014), arXiv:1303.5090
 
 \end{document}

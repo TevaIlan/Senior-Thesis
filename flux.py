@@ -5,6 +5,8 @@ import numpy as np
 import os,sys
 from szar import counts
 import healpy as hp
+import matplotlib.pyplot as plt
+
 
 def deltaTOverTcmbToJyPerSr(freqGHz,T0 = 2.7255):
     """
@@ -213,9 +215,13 @@ if rank==0:
     print(wstack.shape)
     
     # io.hist(st.vectors['thetas'],save_file = io.dout_dir+"thetahist.png")
-
-    io.plot_img(stack,io.dout_dir+"stack.png")
+    #io.plot_img(stack,io.dout_dir+"stack.png")
+    plt.imshow(wstack)
+    plt.ylabel('microKelvin')
+    plt.xlabel('acrminutes')
+    plt.savefig(io.dout_dir+"wstack.pdf")
     io.plot_img(wstack,io.dout_dir+"wstack.pdf")
+
 
     if (zmin is None) and (zmax is None):
         #np.savetxt("f"+freq+"_"+args.cat+"_apflux.txt",st.vectors['apflux'])

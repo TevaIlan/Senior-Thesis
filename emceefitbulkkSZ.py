@@ -318,7 +318,7 @@ print(Y_mcmc, D_mcmc,kSZ_mcmc)
 # print(yerrs)
 
 import corner
-fig = corner.corner(samples, labels=["$Y$", "$D$", "$kSZ$"])#,
+fig = corner.corner(samples, labels=["$Y$", "$D$", "$kSZ$"],levels=(1-np.exp(-0.5),))#,
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])
