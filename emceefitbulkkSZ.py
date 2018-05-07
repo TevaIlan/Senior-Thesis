@@ -279,6 +279,7 @@ Y_mcmc, D_mcmc, kSZ_mcmc= map(lambda v: (v[1], v[4]-v[3],v[3]-v[2],v[2]-v[1], v[
                              zip(*np.percentile(samples, [5,32,50,68,95],
                                                 axis=0)))
 print(Y_mcmc, D_mcmc,kSZ_mcmc)
+print(np.mean(Y_samples),np.mean(D_samples),np.mean(kSZ_samples))
 
 
 

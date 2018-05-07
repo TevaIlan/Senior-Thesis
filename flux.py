@@ -216,9 +216,9 @@ if rank==0:
     
     # io.hist(st.vectors['thetas'],save_file = io.dout_dir+"thetahist.png")
     #io.plot_img(stack,io.dout_dir+"stack.png")
-    plt.imshow(wstack)
     plt.ylabel('microKelvin')
     plt.xlabel('acrminutes')
+    plt.imshow(wstack)
     plt.savefig(io.dout_dir+"wstack.pdf")
     io.plot_img(wstack,io.dout_dir+"wstack.pdf")
 

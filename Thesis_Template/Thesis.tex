@@ -11,15 +11,15 @@
 \graphicspath{ {/Users/Teva/Senior-Thesis} }
 %these can be specified in your .cls file if you want the main.tex file to look cleaner
 \author{Teva Ilan}
-\title{Insert Title}
+\title{Constraining the Relativistic and Bulk Kinematic Sunyaev--Zel'dovich Effects}
 \abstract{When Cosmic Microwave Background (CMB) photons interact with free electrons in the hot gas of galaxy clusters they gain energy via inverse Compton scattering, resulting in a spectral distortion of the CMB called the Sunyaev--Zel'dovich (SZ) effect. This phenomena is invaluable to cosmology as it facilitates measurements of various properties of galaxy clusters and cosmological parameters. In this work, we use CMB maps from the Atacama Cosmology Telescope (ACT) the Planck satellite and the redMaPPer galaxy cluster catalog to fit for the thermal SZ (tSZ effect), the kinetic SZ (kSZ effect), the dust, and the relativistic SZ (rSZ) effect. Though we do not detect kSZ or rSZ using an mcmc fitting algorithm, we are able to put constraints on both of these quantities. }
 
-\adviser{Your Advisor}
-\date{Star Wars Day}
+\adviser{Prof. Jo Dunkley}
+\date{May the 4th, 2018}
 %begin thesis content
 \begin{document}
 \chapter{Introduction}
-\section{Background}
+%\section{Background}
 
 %Understanding the relationship between between the amount of gas in galaxy clusters and the number of galaxies in the cluster (i.e. the richness of the cluster) is important for a few reasons. First of all, it informs the astrophysics of galaxy cluster formation. Because non-gravitational processes, such as AGN feedback and supernovae are thought to play a role in galaxy and galaxy group formation, we expect that they will cause deviations from the richness-gas relation that we would get if only gravitational processes were involved. Thus learning about the richness-gas scaling relation can tell us how more about how non-gravitational processes are involved in galaxy and galaxy group formation. 
 %\par Secondly as both richness and an effect of the gas called the SZ effect are used as ways of finding clusters and as proxies for their mass it is important to understand how they are related. The SZ effect is the result of inverse Compton scattering of photons from the CMB off of high energy electrons in hot gas. When CMB photons go through hot cluster gas they gain energy from the high energy electrons. Then when we measure the CMB these photons produce a frequency-dependent change in the observed CMB temperature along the Line-of-Sight to the galaxy cluster. 
@@ -42,7 +42,7 @@
 \section{CMB Maps}
 We used CMB maps at 5 frequencies: 90 GHz, 150 GHz, 217 GHz, 353 GHz, 545 GHz, and 857 GHz. The 90 GHz and 150 GHz maps are from the Atacama Cosmology Telescope (ACT) while the high frequency maps are from the Planck satellite. All of the maps go from -44 degrees to 46 degrees in right ascension and -9 degrees to 5 degrees in declination. Using maps from multiple frequencies allows us to disentangle different components of the observed flux from each other, specifically the dust component, the tSZ effect component, the kSZ effect component, and the rSZ effect component. It should also be noted that the ACT maps that we refer to as the  90 GHz and 150 GHz maps actually combine data from multiple frequencies. The "90 GHz" ACT map is a coadd of Planck 100 GHz and all ACTPol 90 GHz night-time data collected from 2013-2015. Similarly, the "150 GHz" ACT map is a coadd of Planck 143 GHz and all ACTPol 150 GHz night-time data collected during the same time period.
 \section{Galaxy Cluster Catalogs}
-Our work involved two sets of galaxy cluster catalogues: the redMaPPer and an ACT confirmed cluster catalog. RedMaPPer is a red-sequence cluster finder, which means that it finds galaxy cluster candidates by looking for over densities of galaxies that form a red sequence. Our main analysis only uses the redMaPPer catalog. Of the 2198 galaxy clusters in the redMaPPer catalog, over 14,000 were located on the maps we used and sufficiently far from point sources to be used in our analysis. Some properties of the redMaPPer catalog are shown in the two plots below.
+Our work involved two sets of galaxy cluster catalogues: the redMaPPer and an ACT confirmed cluster catalog. RedMaPPer is a red-sequence cluster finder, which means that it finds galaxy cluster candidates by looking for over densities of galaxies that form a red sequence. Our main analysis only uses the redMaPPer catalog. Of the 26111 galaxy clusters in the redMaPPer catalog, over 14,000 were located on the maps we used and sufficiently far from point sources to be used in our analysis. Some properties of the redMaPPer catalog are shown in the two plots below.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_z_hist.pdf}
@@ -58,8 +58,14 @@ Our work involved two sets of galaxy cluster catalogues: the redMaPPer and an AC
 \end{figure}
 
  \chapter{Theory and Methods}
-\section{The tSZ Effect}
-The tSZ effect is the result of inverse Compton scattering of photons from the CMB off of high energy electrons in hot gas. When CMB photons go through hot cluster gas they gain energy from the high energy electrons. Then when we measure the CMB these photons produce a frequency-dependent change in the observed CMB temperature along the LOS to the galaxy cluster (Greco et al.). The tSZ effect is quantified by the Compton-y parameter. The observationally relevant Compton-y parameter is the Comptonization parameter integrated along the full LOS within some aperture radius,
+\section{The SZ Effect}
+The tSZ effect is the result of inverse Compton scattering of photons from the CMB off of high energy electrons in hot gas. When CMB photons go through hot cluster gas they gain energy from the high energy electrons. Then when we measure the CMB these photons produce a frequency-dependent change in the observed CMB temperature along the LOS to the galaxy cluster (Greco et al.). 
+\par Though the tSZ effect is the dominant component of the SZ effect, the kSZ and rSZ components can also be observationally relevant, as explained in the introduction. Defining the dimensionless frequency as $x\equiv h\nu_i/2k_B T_{CMB}$, we can write the complete SZ effect as an intensity shift relative to the CMB,
+\begin{equation}
+\frac{\Delta I_{SZ}}{I_0}=h(x)\left[f(x,T_{eff})y-\tau_{e}\left(\frac{v_{pec}}{c}\right)\right],
+\end{equation}
+where $I_0=2(k_B T_{CMB})^3/(hc)^2$, $h(x)=x^4 e^x/(e^x-1)^2$, y is the Compton y-parameter which is a measure of the electron pressure integrated along the LOS, $\tau_e$ is the optical depth of the plasma, and $v_{pec}$ is the LOS peculiar velocity in the rest frame of the CMB. The first term in the square brackets represents the tSZ effect (including relativistic corrections and thus including rSZ) and the second term represents the kSZ effect. The function $f(x,T_{eff})$ expresses the frequency and temperature dependence of the tSZ effect, where the dependence on temperature is due solely to the relativistic corrections to the tSZ effect, rSZ (Hincks et al, 2018).
+\par The tSZ effect is quantified by the Compton-y parameter. The observationally relevant Compton-y parameter is the Comptonization parameter integrated along the full LOS within some aperture radius,
 \begin{equation}
 Y^{cyl}_{c}=d^{-2}_A(z) \frac{\sigma_T}{m_e c^2}\int_0^{R_c} 2 \pi R dR \int_{-\inf}^{\inf} dl P_e(r,M,z)
 \end{equation}
@@ -108,7 +114,7 @@ In addition to doing this aperture photometry, we also use rectangular cutouts o
   %\centering
  % \textbf{RedMaPPer Stacks}\par\medskip
   \begin{subfigure}[b]{0.5\linewidth}
-    \centering\includegraphics[width=200pt]{../f90_redmapper_wstack.png}
+    \centering\includegraphics[width=200pt]{../f90_redmapper_wstack.pdf}
     \caption{\label{fig:fig1}}
   \end{subfigure}
   %\newline
