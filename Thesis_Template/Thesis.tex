@@ -201,13 +201,13 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../BulkkSZplot.pdf}
-\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the bulk kSZ. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ<-3.5\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.}
+\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the bulk kSZ. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ=-4.5\pm8.4\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_apfluxes_kSZfitlog.pdf}
-\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the bulk kSZ on a logarithmic y-scale. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ<-3.5\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.} %not sure the constraint value is correct
+\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the bulk kSZ on a logarithmic y-scale. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ=-4.5\pm8.4\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.} %not sure the constraint value is correct
 \end{figure}
 
 \begin{table}[h!]
@@ -217,8 +217,8 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 Compton-y & Dust & rSZ & kSZ \\ [0.5ex] 
  \hline\hline %\\[0.01 cm]
  $7.9\times10^{-17}\pm 2.0\times10^{-18}$ & $5.7\times10^{-18}\pm 3.3\times10^{-19}$ & -- & -- \\[0.25 cm]
- $8.3\times10^{17^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}}$ & $5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$  & $5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$ & -- \\[0.25 cm] %$5.4\times10^{-18}^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}$ & <1.4\times10^8 & -- \\[0.25 cm] 
- $7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$ & $5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$ & -- & <$-3.5\times10^{-18}$ \\ [1ex] 
+ $8.3\times10^{-17^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}}$ & $5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$  & $T_{eff}<1.4\times10^8$ & -- \\[0.25 cm] %$5.4\times10^{-18}^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}$ & <1.4\times10^8 & -- \\[0.25 cm] 
+ $7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$ & $5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$ & -- & $-4.5\pm8.4\times10^{-18}$ \\ [1ex] 
  \hline
 \end{tabular}
 \caption{This table shows the best fit values and constraints of the linear fit we performed (for Compton-y and dust only) and for the two fits we performed using the emcee python package. The first row shows the values for the linear fit, the second row shows the best fit values and constraints for the rSZ fit and the third row shows the best fit values and constraints for the kSZ fit.}
@@ -226,7 +226,7 @@ Compton-y & Dust & rSZ & kSZ \\ [0.5ex]
 \end{table}
 
 \chapter{Discussion and Conclusion}
-\par Comparing our results to previous work on this topic, with regard to rSZ Hincks et al. claimed a $5\sigma$ detection of rSZ at $T_\mathrm{eff}\approx 0.313\, keV$. Converting our constraint from Kelvin to kiloelectron volts give $\mathrm{T_{eff}}<12.4 \, keV$. Thus our results are consistent with those of Hincks et al. With regard to bulk kSZ, the Planck collaboration previously constrained bulk flow on very large scales to less than $254\, km/s$ (95\% confidence level). Our measurement of kSZ is in units of Kelvin square--arcminutes. To convert our constraint on kSZ to a constraint on the velocity, we must relate the kSZ effect to the peculiar velocity that produces it,
+\par Comparing our results to previous work on this topic, with regard to rSZ Hincks et al. claimed a $5\sigma$ detection of rSZ at $T_\mathrm{eff}\approx 0.313\, keV$. Converting our constraint from Kelvin to kiloelectron volts give $\mathrm{T_{eff}}<12.4 \, keV$. Thus our results are consistent with those of Hincks et al. With regard to bulk kSZ, the Planck collaboration previously constrained bulk flow on very large scales to less than $254\, km/s$ (95\% confidence level). Our measurement of kSZ is in units of Kelvin square--arcminutes. To convert our value for kSZ to a constraint on the velocity, we must relate the kSZ effect to the peculiar velocity that produces it,
 \begin{equation}
 \frac{T_{SZ}}{T_{CMB}}=-\tau_e\left(\frac{v_{pec}}{c}\right)
 \end{equation}

@@ -200,7 +200,8 @@ pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
 pl.legend()
 pl.done(io.dout_dir+"apfluxes_fitlog.pdf")
 
-
+print(apmeans)
+print(aperrs)
 # print(apmeans)
 # print(apmeans_lessthan353)
 # fs = [float(f) for f in lowfreqlist]
