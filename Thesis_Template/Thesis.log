@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  7 MAY 2018 16:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  7 MAY 2018 20:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -518,21 +518,24 @@ LaTeX Warning: Label `fig:fig3' multiply defined.
 
 LaTeX Warning: Label `sub@fig:fig3' multiply defined.
 
+
+LaTeX Warning: Label `table:1' multiply defined.
+
 )
 \openout1 = `Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -651,172 +654,166 @@ Chapter 1.
 [1
 
 
-] [2]
+] [2] [3]
 Chapter 2.
-<../redmapper_z_hist.pdf, id=30, 578.16pt x 433.62pt>
+<../redmapper_z_hist.pdf, id=34, 578.16pt x 433.62pt>
 File: ../redmapper_z_hist.pdf Graphic file (type pdf)
 
 <use ../redmapper_z_hist.pdf>
-Package pdftex.def Info: ../redmapper_z_hist.pdf used on input line 48.
+Package pdftex.def Info: ../redmapper_z_hist.pdf used on input line 80.
 (pdftex.def)             Requested size: 216.81pt x 162.6071pt.
+ [4
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../redmapper_richness_hist.pdf, id=31, 578.16pt x 433.62pt>
+]
+<../redmapper_richness_hist.pdf, id=39, 578.16pt x 433.62pt>
 File: ../redmapper_richness_hist.pdf Graphic file (type pdf)
 
 <use ../redmapper_richness_hist.pdf>
-Package pdftex.def Info: ../redmapper_richness_hist.pdf used on input line 55.
+Package pdftex.def Info: ../redmapper_richness_hist.pdf used on input line 87.
 (pdftex.def)             Requested size: 216.81pt x 162.6071pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3
-
-] [4 <../redmapper_z_hist.pdf> <../redmapper_richness_hist.pdf
+ [5 <../redmapper_z_hist.pdf> <../redmapper_richness_hist.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../redmapper_richness_hist.p
 df): PDF inclusion: multiple pdfs with page group included in a single page
 >]
 Chapter 3.
-[5
+[6
 
-] [6] <../gnu.pdf, id=111, 578.16pt x 433.62pt>
+] [7] <../gnu.pdf, id=114, 578.16pt x 433.62pt>
 File: ../gnu.pdf Graphic file (type pdf)
  <use ../gnu.pdf>
-Package pdftex.def Info: ../gnu.pdf used on input line 98.
+Package pdftex.def Info: ../gnu.pdf used on input line 130.
 (pdftex.def)             Requested size: 216.81pt x 162.6071pt.
 
-<../bdust.pdf, id=112, 578.16pt x 433.62pt>
+<../bdust.pdf, id=115, 578.16pt x 433.62pt>
 File: ../bdust.pdf Graphic file (type pdf)
  <use ../bdust.pdf>
-Package pdftex.def Info: ../bdust.pdf used on input line 105.
+Package pdftex.def Info: ../bdust.pdf used on input line 137.
 (pdftex.def)             Requested size: 216.81pt x 162.6071pt.
 
-<../f90_redmapper_wstack.pdf, id=113, 399.80792pt x 321.58667pt>
+<../f90_redmapper_wstack.pdf, id=116, 399.80792pt x 321.58667pt>
 File: ../f90_redmapper_wstack.pdf Graphic file (type pdf)
 
 <use ../f90_redmapper_wstack.pdf>
-Package pdftex.def Info: ../f90_redmapper_wstack.pdf used on input line 117.
+Package pdftex.def Info: ../f90_redmapper_wstack.pdf used on input line 149.
 (pdftex.def)             Requested size: 200.0pt x 160.87144pt.
 
-<../f150_redmapper_wstack.png, id=114, 399.6531pt x 322.3242pt>
+<../f150_redmapper_wstack.png, id=117, 399.6531pt x 322.3242pt>
 File: ../f150_redmapper_wstack.png Graphic file (type png)
 
 <use ../f150_redmapper_wstack.png>
-Package pdftex.def Info: ../f150_redmapper_wstack.png used on input line 122.
+Package pdftex.def Info: ../f150_redmapper_wstack.png used on input line 154.
 (pdftex.def)             Requested size: 200.0pt x 161.30432pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 122--123
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 154--155
  [][] 
  []
 
-<../f217_redmapper_wstack.png, id=116, 403.2666pt x 321.6015pt>
+<../f217_redmapper_wstack.png, id=119, 403.2666pt x 321.6015pt>
 File: ../f217_redmapper_wstack.png Graphic file (type png)
 
 <use ../f217_redmapper_wstack.png>
-Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 127.
+Package pdftex.def Info: ../f217_redmapper_wstack.png used on input line 159.
 (pdftex.def)             Requested size: 200.0pt x 159.49992pt.
 
-<../f353_redmapper_wstack.png, id=117, 391.7034pt x 321.6015pt>
+<../f353_redmapper_wstack.png, id=120, 391.7034pt x 321.6015pt>
 File: ../f353_redmapper_wstack.png Graphic file (type png)
 
 <use ../f353_redmapper_wstack.png>
-Package pdftex.def Info: ../f353_redmapper_wstack.png used on input line 131.
+Package pdftex.def Info: ../f353_redmapper_wstack.png used on input line 163.
 (pdftex.def)             Requested size: 200.0pt x 164.21088pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 131--132
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 163--164
  [][] 
  []
 
-<../f545_redmapper_wstack.png, id=118, 399.6531pt x 321.6015pt>
+<../f545_redmapper_wstack.png, id=121, 399.6531pt x 321.6015pt>
 File: ../f545_redmapper_wstack.png Graphic file (type png)
 
 <use ../f545_redmapper_wstack.png>
-Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 136.
+Package pdftex.def Info: ../f545_redmapper_wstack.png used on input line 168.
 (pdftex.def)             Requested size: 200.0pt x 160.94266pt.
 
-<../f857_redmapper_wstack.png, id=119, 414.8298pt x 321.6015pt>
+<../f857_redmapper_wstack.png, id=122, 414.8298pt x 321.6015pt>
 File: ../f857_redmapper_wstack.png Graphic file (type png)
 
 <use ../f857_redmapper_wstack.png>
-Package pdftex.def Info: ../f857_redmapper_wstack.png used on input line 140.
+Package pdftex.def Info: ../f857_redmapper_wstack.png used on input line 172.
 (pdftex.def)             Requested size: 200.0pt x 155.04906pt.
 
-Overfull \hbox (156.63536pt too wide) in paragraph at lines 140--141
+Overfull \hbox (156.63536pt too wide) in paragraph at lines 172--173
  [][] 
  []
 
-[7 <../gnu.pdf> <../bdust.pdf
+[8 <../gnu.pdf> <../bdust.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../bdust.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
->] [8] [9 <../f90_redmapper_wstack.pdf> <../f150_redmapper_wstack.png> <../f217
-_redmapper_wstack.png> <../f353_redmapper_wstack.png> <../f545_redmapper_wstack
-.png> <../f857_redmapper_wstack.png>]
+>] [9] [10 <../f90_redmapper_wstack.pdf> <../f150_redmapper_wstack.png> <../f21
+7_redmapper_wstack.png> <../f353_redmapper_wstack.png> <../f545_redmapper_wstac
+k.png> <../f857_redmapper_wstack.png>]
 Chapter 4.
-<../redmapper_apfluxes_fitlog.pdf, id=209, 483.82756pt x 345.77255pt>
+<../redmapper_apfluxes_fitlog.pdf, id=212, 483.82756pt x 345.77255pt>
 File: ../redmapper_apfluxes_fitlog.pdf Graphic file (type pdf)
 
 <use ../redmapper_apfluxes_fitlog.pdf>
-Package pdftex.def Info: ../redmapper_apfluxes_fitlog.pdf used on input line 15
-0.
+Package pdftex.def Info: ../redmapper_apfluxes_fitlog.pdf used on input line 18
+2.
 (pdftex.def)             Requested size: 216.81pt x 154.94725pt.
- [10
+ [11
 
  <../redmapper_apfluxes_fitlog.pdf>]
-<../CornerTeffplot.png, id=250, 549.252pt x 549.252pt>
-File: ../CornerTeffplot.png Graphic file (type png)
+<../redmapper_CornerTeffplot.pdf, id=253, 549.25201pt x 549.25201pt>
+File: ../redmapper_CornerTeffplot.pdf Graphic file (type pdf)
 
-<use ../CornerTeffplot.png>
-Package pdftex.def Info: ../CornerTeffplot.png used on input line 159.
+<use ../redmapper_CornerTeffplot.pdf>
+Package pdftex.def Info: ../redmapper_CornerTeffplot.pdf used on input line 191
+.
 (pdftex.def)             Requested size: 216.81pt x 216.8055pt.
 
-<../redmapper_apfluxes_Tefffitlog.png, id=251, 483.4863pt x 345.4506pt>
-File: ../redmapper_apfluxes_Tefffitlog.png Graphic file (type png)
+<../redmapper_apfluxes_Tefffitlog.pdf, id=254, 483.82756pt x 345.77255pt>
+File: ../redmapper_apfluxes_Tefffitlog.pdf Graphic file (type pdf)
 
-<use ../redmapper_apfluxes_Tefffitlog.png>
-Package pdftex.def Info: ../redmapper_apfluxes_Tefffitlog.png used on input lin
-e 165.
-(pdftex.def)             Requested size: 216.81pt x 154.9084pt.
+<use ../redmapper_apfluxes_Tefffitlog.pdf>
+Package pdftex.def Info: ../redmapper_apfluxes_Tefffitlog.pdf used on input lin
+e 197.
+(pdftex.def)             Requested size: 216.81pt x 154.94725pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../BulkkSZplot.png, id=252, 549.252pt x 549.252pt>
+<../BulkkSZplot.png, id=255, 549.252pt x 549.252pt>
 File: ../BulkkSZplot.png Graphic file (type png)
  <use ../BulkkSZplot.png>
-Package pdftex.def Info: ../BulkkSZplot.png used on input line 171.
+Package pdftex.def Info: ../BulkkSZplot.png used on input line 203.
 (pdftex.def)             Requested size: 216.81pt x 216.8055pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../redmapper_apfluxes_kSZfitlog.png, id=253, 483.4863pt x 345.4506pt>
+<../redmapper_apfluxes_kSZfitlog.png, id=256, 483.4863pt x 345.4506pt>
 File: ../redmapper_apfluxes_kSZfitlog.png Graphic file (type png)
 
 <use ../redmapper_apfluxes_kSZfitlog.png>
 Package pdftex.def Info: ../redmapper_apfluxes_kSZfitlog.png used on input line
- 177.
+ 209.
 (pdftex.def)             Requested size: 216.81pt x 154.9084pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <../CornerTeffplot.png>] [12 <../redmapper_apfluxes_Tefffitlog.png> <../Bul
-kkSZplot.png>] [13 <../redmapper_apfluxes_kSZfitlog.png>]
+[12 <../redmapper_CornerTeffplot.pdf>] [13 <../redmapper_apfluxes_Tefffitlog.pd
+f> <../BulkkSZplot.png>] [14 <../redmapper_apfluxes_kSZfitlog.png>]
 Chapter 5.
-[14
-
-]
-Chapter 6.
 [15
+
+] [16]
+Chapter 6.
+[17
 
 ]
 Chapter 7.
-[16
+[18
 
 ] (./Thesis.aux)
 
@@ -825,12 +822,12 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  4373 strings out of 492995
- 63566 string characters out of 6132704
- 137147 words of memory out of 5000000
+ 63616 string characters out of 6132704
+ 137161 words of memory out of 5000000
  7848 multiletter control sequences out of 15000+600000
  13152 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,39p,1441b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,9n,39p,1441b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
@@ -848,10 +845,10 @@ e/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis.pdf (20 pages, 703387 bytes).
+Output written on Thesis.pdf (22 pages, 693063 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 411 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

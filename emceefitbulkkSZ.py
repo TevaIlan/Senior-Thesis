@@ -163,12 +163,16 @@ def lnlike(param,nu,S,yerr):
     inv_sigma2 = 1.0/(yerr**2)
     #print(param,-0.5*(np.sum((S-model)**2*inv_sigma2 - np.log(inv_sigma2))))
     return -0.5*(np.sum((S-model)**2*inv_sigma2- np.log(inv_sigma2)))
-
+Ymean=7.765539416027165e-17
+Ysigma=2.008962367540969e-18
 def lnprior(param):
     #sys.exit()
     Y,D,dT=param
-    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16 and -1e-17 < dT <1e-17:# and -1e-16 < dT < 0:
-        return 0.0
+    if  1e-17 < Y < 1e-14 and  1e-19< D < 1e-16 and -0.001 < dT <0.001:
+        yprior=-0.5*(Y-Ymean)**2./(Ysigma**2)+0.5*np.log(Ysigma**2.)
+        dprior=0.
+        dtprior=0.
+        return yprior+dprior+dtprior
     return -np.inf
 
 def lnprob(param, nu, S, yerr):
@@ -179,7 +183,7 @@ def lnprob(param, nu, S, yerr):
 
 
 ndim, nwalkers = 3, 20
-guess=np.array([5e-16,8e-18, 1e-20])
+guess=np.array([5e-16,8e-18, 0.000001])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
@@ -323,7 +327,7 @@ fig = corner.corner(samples, labels=["$Y$", "$D$", "$kSZ$"],levels=(1-np.exp(-0.
                      #truths=[Y, D])
 #fig1 = corner.corner(sim_samples, labels=["$Y$", "$D$"],
                       #truths=[Y, D])
-fig.savefig("BulkkSZplot.png")
+fig.savefig("BulkkSZplot.pdf")
 #fig1.savefig("simulatedtriangle50000.png")
 x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)
@@ -336,5 +340,5 @@ pl.add(freqs,dflux(freqs,D_mcmc[0]),label="D")
 pl.add(freqs,np.abs(Sflux(freqs,Y_mcmc[0],D_mcmc[0],kSZ_mcmc[0])),label='Fit')
 pl.add_err(x,np.abs(apmeans),yerr=aperrs,marker="o",ls="none")
 pl.legend()
-pl.done(io.dout_dir+"apfluxes_kSZfitlog.png")
+pl.done(io.dout_dir+"apfluxes_kSZfitlog.pdf")
 
