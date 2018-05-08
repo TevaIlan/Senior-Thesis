@@ -184,30 +184,30 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 %\label{$g(\nu)$}
 \end{figure}
 
-\par However, the linear fit algorithm was not effective at fitting for bulk kSZ or rSZ (in addition to Compton-y and dust). In order to effectively fit for these parameters we needed to include priors which constrained the possible values of the parameters. Without such priors, the fit algorithm resulted in physically nonsensical values (e.g. $T_{eff}<0$ and bulk kSZ significantly deviating from 0). Thus, we used mcmc to fit with priors. For the mcmc fit with parameters Compton-y, dust, and effective temperature, we found that $Y=8.3\times10^{17^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}}$, $D=5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $T_{eff}<1.4\times10^8$. For the mcmc fit with parameters Compton-y, dust, and bulk kSZ, we found that $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ<-3.5\times10^{-18}$. The results of these fits are shown in the plots and table below. The corner plots were generated using code from Foreman-Mackey, 2016. 
+\par However, the linear fit algorithm was not effective at fitting for bulk kSZ or rSZ (in addition to Compton-y and dust). In order to effectively fit for these parameters we needed to include priors which constrained the possible values of the parameters. Without such priors, the fit algorithm resulted in physically nonsensical values (e.g. $T_{eff}<0$ and bulk kSZ significantly deviating from 0). Thus, we used mcmc to fit with priors. For the mcmc fit with parameters Compton-y, dust, and effective temperature, we found that $Y=8.3^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}\times10^{-17}$, $D=5.4^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$, and $T_{eff}<1.4\times10^8$. For the mcmc fit with parameters Compton-y, dust, and bulk kSZ, we found that $Y=7.9^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}\times10^{-17}$, $D=5.8^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$, and $kSZ<-3.5\times10^{-18}$. The results of these fits are shown in the plots and table below. The corner plots were generated using code from Foreman-Mackey, 2016. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_CornerTeffplot.pdf}
-\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the effective temperature. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.0 < T_{eff} <10^{10}.$. The resulting best fit parameters were $Y=8.3\times10^{17^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}}$, $D=5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $T_{eff}<1.4\times10^8$,, where the errors on Y and D are 1 sigma and the constraint on $T_{eff}$ is 2 sigma.}
+\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the effective temperature. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.0 < T_{eff} <10^{10}.$. The resulting best fit parameters were $Y=8.3^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}\times10^{-17}$, $D=5.4^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$, and $T_{eff}<1.4\times10^8$,, where the errors on Y and D are 1 sigma and the constraint on $T_{eff}$ is 2 sigma.}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_apfluxes_Tefffitlog.pdf}
-\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the effective temperature on a logarithmic y-scale. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.0 < T_{eff} <10^{10}.$. The resulting best fit parameters were $Y=8.3\times10^{17^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}}$, $D=5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $T_{eff}<1.4\times10^8$, where the errors on Y and D are 1 sigma and the constraint on $T_{eff}$ is 2 sigma.}
+\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the effective temperature on a logarithmic y-scale. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.0 < T_{eff} <10^{10}.$. The resulting best fit parameters were $Y=8.3^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}\times10^{-17}$, $D=5.4^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$, and $T_{eff}<1.4\times10^8$, where the errors on Y and D are 1 sigma and the constraint on $T_{eff}$ is 2 sigma.}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../BulkkSZplot.pdf}
-\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the bulk kSZ. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ=-4.5\pm8.4\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.}
+\caption{This plot shows the corner plot of the results of the mcmc fit for Compton Y, dust, and the bulk kSZ. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}\times10^{-17}$, $D=5.8^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$, and $kSZ=-4.5\pm0.84\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../redmapper_apfluxes_kSZfitlog.pdf}
-\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the bulk kSZ on a logarithmic y-scale. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$, $D=5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$, and $kSZ=-4.5\pm8.4\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.} %not sure the constraint value is correct
+\caption{This plot shows  the results of the mcmc fit for Compton Y, dust, and the bulk kSZ on a logarithmic y-scale. The priors used were $ 10^{-17} < Y < 10^{-14}, 10^{-19}< D < 10^{-16}$ and $0.001 < kSZ <0.001.$ The resulting best fit parameters were $Y=7.9^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}\times10^{-17}$, $D=5.8^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$, and $kSZ=-4.5\pm0.84\times10^{-18}$, where the errors on Y and D are 1 sigma and the constraint on kSZ is 2 sigma.} %not sure the constraint value is correct
 \end{figure}
 
 \begin{table}[h!]
@@ -217,8 +217,8 @@ Before doing the mcmc fitting, we performed a linear fit to the data by minimizi
 Compton-y & Dust & rSZ & kSZ \\ [0.5ex] 
  \hline\hline %\\[0.01 cm]
  $7.9\times10^{-17}\pm 2.0\times10^{-18}$ & $5.7\times10^{-18}\pm 3.3\times10^{-19}$ & -- & -- \\[0.25 cm]
- $8.3\times10^{-17^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}}$ & $5.4\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$  & $T_{eff}<1.4\times10^8$ & -- \\[0.25 cm] %$5.4\times10^{-18}^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}$ & <1.4\times10^8 & -- \\[0.25 cm] 
- $7.9\times10^{-17^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}}$ & $5.8\times10^{-18^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}}$ & -- & $-4.5\pm8.4\times10^{-18}$ \\ [1ex] 
+ $8.3^{+2.9\times10^{-18}}_{-3.1\times10^{-18}}\times10^{-17}$ & $5.4^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$  & $T_{eff}<1.4\times10^8$ & -- \\[0.25 cm] %$5.4\times10^{-18}^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}$ & <1.4\times10^8 & -- \\[0.25 cm] 
+ $7.9^{+2.1\times10^{-18}}_{-2.1\times10^{-18}}\times10^{-17}$ & $5.8^{+3.3\times10^{-19}}_{-3.4\times10^{-19}}\times10^{-18}$ & -- & $-4.5\pm0.84\times10^{-18}$ \\ [1ex] 
  \hline
 \end{tabular}
 \caption{This table shows the best fit values and constraints of the linear fit we performed (for Compton-y and dust only) and for the two fits we performed using the emcee python package. The first row shows the values for the linear fit, the second row shows the best fit values and constraints for the rSZ fit and the third row shows the best fit values and constraints for the kSZ fit.}

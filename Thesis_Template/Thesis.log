@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  7 MAY 2018 23:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  7 MAY 2018 23:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -803,6 +803,11 @@ Package pdftex.def Info: ../redmapper_apfluxes_kSZfitlog.pdf used on input line
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+Overfull \hbox (1.5387pt too wide) in paragraph at lines 215--224
+ [][] 
+ []
+
 [12 <../redmapper_CornerTeffplot.pdf>] [13 <../redmapper_apfluxes_Tefffitlog.pd
 f> <../BulkkSZplot.pdf
 
@@ -832,7 +837,7 @@ Here is how much of TeX's memory you used:
  7848 multiletter control sequences out of 15000+600000
  13152 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,11n,39p,1441b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,10n,39p,1441b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
@@ -852,7 +857,7 @@ xmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/local/texlive/2017/texmf-
 dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis.pdf (22 pages, 681013 bytes).
+Output written on Thesis.pdf (22 pages, 680148 bytes).
 PDF statistics:
  499 PDF objects out of 1000 (max. 8388607)
  205 compressed objects within 3 object streams
