@@ -183,7 +183,7 @@ def lnprob(param, nu, S, yerr):
 
 
 ndim, nwalkers = 3, 20
-guess=np.array([5e-16,8e-18, 0.000001])
+guess=np.array([5e-16,8e-18, 1e-20])
 pos = [guess*(1+0.1*np.random.uniform(-1,1,size=ndim)) for i in range(nwalkers)]
 #print(pos[0],pos[1])
 #sys.exit()
@@ -333,7 +333,7 @@ x = np.array([90,150,217,353,545,857])
 aperrs=np.array(aperrs)
 apmeans=np.array(apmeans)
 
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='Flux ($K-\mathrm{arcmin}^2$)',yscale='log')
 pl.add(freqs,np.abs(yflux(freqs,Y_mcmc[0])),label='Y')
 pl.add(freqs,dflux(freqs,D_mcmc[0]),label="D")
 #pl.add(freqs,gfuncrel(freqs,T_mcmc[0]),label="Teff")

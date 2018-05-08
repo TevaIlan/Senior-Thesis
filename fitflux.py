@@ -192,7 +192,7 @@ print(bcor)
 # print(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0]))
 # print(np.abs(Sflux(freqs,Yfit[0],Dfit[0],dTfit[0])))
 
-pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='F (K*arcmin$^2$)',yscale='log')
+pl = io.Plotter(xlabel='$\\nu$ (GHz)',ylabel='Flux ($K-\mathrm{arcmin}^2$)',yscale='log')
 pl.add(freqs,np.abs(yflux(freqs,Yfit[0])),label='Y')
 pl.add(freqs,dflux(freqs,Dfit[0]),label="D")
 pl.add(freqs,np.abs(Sflux(freqs,Yfit[0],Dfit[0])),label='Fit')
